@@ -7,7 +7,7 @@ module.exports = {
   context,
   entry: './index.js',
   output: {
-    filename: '[name].js'
+    filename: './dist/[name].js'
   },
   module: {
     loaders: [
@@ -33,9 +33,11 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: './.env'
+      path: './.env',
+      systemvars: true
     }),
     new HtmlWebpackPlugin({
+      filename: './dist/index.html',
       template: 'index.ejs'
     })
   ]
