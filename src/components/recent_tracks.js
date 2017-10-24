@@ -22,6 +22,7 @@ class RecentTracks extends React.Component {
   render() {
     return (
       <div>
+        <h2>Recent Tracks</h2>
         <ul>
           {this.state.songs.map(song =>
             <Track id={song.mbid} artist={song.artist["#text"]} name={song.name} />

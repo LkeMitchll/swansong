@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RecentTracks from './components/recent_tracks.js'
+import App from './components/app.js'
 
 ReactDOM.render(
-  <RecentTracks user="luke--mitchell" limit="10"/>,
+  <App />,
   document.getElementById('outlet')
 )
