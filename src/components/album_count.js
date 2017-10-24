@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import urlConstructor from '../shared/url_constructor.js'
 
 class AlbumCount extends React.Component {
   constructor(props) {
@@ -11,8 +12,7 @@ class AlbumCount extends React.Component {
   }
 
   componentDidMount() {
-    const base_url = "http://ws.audioscrobbler.com/2.0/"
-    axios.get(`${base_url}?method=user.getweeklyalbumchart&user=${this.props.user}&from=${this.props.from}&to=${this.props.to}}&api_key=${process.env.LASTFM_API_KEY}&format=json`)
+    axios.get(urlConstructor("user.getweeklyalbumchart", this.props.user, `&${this.props.from}&${this.props.to}`))
       .then(res => {
         const albums = res.data.weeklyalbumchart.album.map(obj => obj)
         this.setState({ albums: albums.length })

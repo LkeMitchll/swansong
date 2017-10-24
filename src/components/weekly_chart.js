@@ -14,8 +14,7 @@ class WeeklyChart extends React.Component {
   }
 
   componentDidMount() {
-    const base_url = "http://ws.audioscrobbler.com/2.0/"
-    axios.get(`${base_url}?method=user.getweeklychartlist&user=${this.props.user}&api_key=${process.env.LASTFM_API_KEY}&format=json`)
+    axios.get(urlConstructor("user.getweeklychartlist", this.props.user, ''))
       .then(res => {
         const weeks = res.data.weeklychartlist.chart.map(obj => obj)
         const week = weeks[weeks.length - 1]
