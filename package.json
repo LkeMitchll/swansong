@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "clean": "rm -rf dist",
+    "start": "webpack-dev-server --watch",
+    "build": "yarn run clean && webpack",
+    "docker:build": "docker build -t swansong .",
+    "docker:start": "docker run -d -p 1337:5000 --name swansong swansong && open http://localhost:1337",
+    "docker:stop": "docker stop swansong && docker rm swansong"
+  },
   "dependencies": {
     "axios": "^0.17.0",
     "babel-cli": "^6.26.0",

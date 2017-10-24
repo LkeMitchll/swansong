@@ -14,4 +14,4 @@ COPY site.conf /etc/nginx/conf.d/default.conf
 RUN yarn install
 
 # Run nginx
-CMD yarn run webpack && nginx
+CMD yarn run build && nginx
