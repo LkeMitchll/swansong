@@ -1,33 +1,18 @@
 var path = require('path');
-const context = path.resolve(__dirname, './src');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  context,
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
-    filename: './dist/[name].js'
+    path: path.resolve(__dirname, "dist"),
+    filename: '[name].js'
   },
   module: {
     loaders: [
-      {
-        include: path.resolve(__dirname, './src'),
-        loaders: [
-          'style-loader',
-          'css-loader?importLoader=1&modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader'
-        ],
-        test: /\.css$/
-      },
-      {
+        {
         test: /\.js?/,
         loader: 'babel-loader',
-        query: {
-          plugins: [
-            'transform-react-jsx',
-            [ 'react-css-modules', { context } ]
-          ]
-        }
       },
     ]
   },
@@ -37,8 +22,7 @@ module.exports = {
       systemvars: true
     }),
     new HtmlWebpackPlugin({
-      filename: './dist/index.html',
-      template: 'index.ejs'
+      template: 'src/index.ejs'
     })
   ]
 };
