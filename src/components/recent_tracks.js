@@ -8,7 +8,14 @@ class RecentTracks extends React.Component {
     super(props)
 
     this.state = {
-      songs: []
+      songs: [
+        {
+          mbid: '000000',
+          artist: {'#text': 'xxxxxxxxx'},
+          name: 'xxxxxxxxxxxxxxxxxxxxxxx',
+          url: 'http://interroban.gg'
+        }
+      ]
     }
   }
 
@@ -26,7 +33,7 @@ class RecentTracks extends React.Component {
         <h2>Recent Tracks</h2>
         <ul>
           {this.state.songs.map(song =>
-            <Track id={song.mbid} artist={song.artist['#text']} name={song.name} />
+            <Track id={song.mbid} artist={song.artist['#text']} name={song.name} url={song.url} />
           )}
         </ul>
       </div>

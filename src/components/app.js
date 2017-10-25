@@ -7,7 +7,7 @@ class App extends React.Component {
     return (
       <section>
         <WeeklyChart user='luke--mitchell'/>
-        <RecentTracks user='luke--mitchell' limit='10'/>
+        <RecentTracks user='luke--mitchell' limit='20'/>
       </section>
     )
   }
