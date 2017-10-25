@@ -1,26 +1,32 @@
 import React from 'react'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
-import AlbumCount from './album_count.js'
+import WeeklyCount from './weekly_count.js'
 
 class WeeklyChart extends React.Component {
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state = {
-      from: "",
-      to: ""
+      albums: 'xxx',
+      tracks: 'xxx',
+      artists: 'xxx'
     }
   }
 
-  componentDidMount() {
-    axios.get(urlConstructor("user.getweeklychartlist", this.props.user, ''))
-      .then(res => {
-        const weeks = res.data.weeklychartlist.chart.map(obj => obj)
-        const week = weeks[weeks.length - 1]
-        this.setState({ from: week["from"] })
-        this.setState({ from: week["to"] })
-      })
+  async componentDidMount() {
+    const getWeek = await axios.get(urlConstructor('user.getweeklychartlist', this.props.user, ''))
+    var weeks = getWeek.data.weeklychartlist.chart.map(obj => obj)
+    var week = weeks[weeks.length - 1]
+
+    const getAlbums = await axios.get(urlConstructor('user.getweeklyalbumchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+    const getTracks = await axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+    const getArtists = await axios.get(urlConstructor('user.getweeklyartistchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+
+    this.setState({
+      albums: getAlbums.data.weeklyalbumchart.album.length,
+      tracks: getTracks.data.recenttracks['@attr'].total,
+      artists: getArtists.data.weeklyartistchart.artist.length
+    })
   }
 
   render() {
@@ -36,13 +42,14 @@ class WeeklyChart extends React.Component {
             </tr>
             <tr>
               <td>
-                <AlbumCount
-                  user={this.props.user}
-                  from={this.state.from}
-                  to={this.state.to} />
+                <WeeklyCount total={this.state.albums}/>
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <WeeklyCount total={this.state.tracks}/>
+              </td>
+              <td>
+                <WeeklyCount total={this.state.artists}/>
+              </td>
             </tr>
           </tbody>
         </table>
