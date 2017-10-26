@@ -33,26 +33,15 @@ class WeeklyChart extends React.Component {
     return (
       <section>
         <h2>This Week</h2>
-        <table>
-          <tbody>
-            <tr>
-              <th>Albums</th>
-              <th>Tracks</th>
-              <th>Artists</th>
-            </tr>
-            <tr>
-              <td>
-                <WeeklyCount total={this.state.albums}/>
-              </td>
-              <td>
-                <WeeklyCount total={this.state.tracks}/>
-              </td>
-              <td>
-                <WeeklyCount total={this.state.artists}/>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <p>
+          <WeeklyCount total={this.state.tracks}/>
+          <span> Tracks from </span>
+          <WeeklyCount total={this.state.albums}/>
+          <span> Albums and </span>
+          <WeeklyCount total={this.state.artists}/>
+          <span> Artists.</span>
+        </p>
+        <a href={ 'https://www.last.fm/user/' + this.props.user }>More</a>
       </section>
     )
   }

@@ -3,7 +3,7 @@ import React from 'react'
 class WeeklyCount extends React.Component {
   render() {
     return (
-      <span>{this.props.total}</span>
+      <strong>{this.props.total}</strong>
     )
   }
 }
