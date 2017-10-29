@@ -13,20 +13,26 @@ class WeeklyChart extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    const getWeek = await axios.get(urlConstructor('user.getweeklychartlist', this.props.user, ''))
-    var weeks = getWeek.data.weeklychartlist.chart.map(obj => obj)
-    var week = weeks[weeks.length - 1]
+  componentDidMount() {
+    var _this = this
+    axios.get(urlConstructor('user.getweeklychartlist', this.props.user, ''))
+      .then(res => {
+        var weeks = res.data.weeklychartlist.chart.map(obj => obj)
+        var week = weeks[weeks.length - 1]
 
-    const getAlbums = await axios.get(urlConstructor('user.getweeklyalbumchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
-    const getTracks = await axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${week['from']}&to=${week['to']}`))
-    const getArtists = await axios.get(urlConstructor('user.getweeklyartistchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+        const getAlbums = axios.get(urlConstructor('user.getweeklyalbumchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+        const getTracks = axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+        const getArtists = axios.get(urlConstructor('user.getweeklyartistchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
 
-    this.setState({
-      albums: getAlbums.data.weeklyalbumchart.album.length,
-      tracks: getTracks.data.recenttracks['@attr'].total,
-      artists: getArtists.data.weeklyartistchart.artist.length
-    })
+        axios.all([getAlbums, getTracks, getArtists])
+          .then(axios.spread((albums, tracks, artists) => {
+            _this.setState({
+              albums: albums.data.weeklyalbumchart.album.length,
+              tracks: tracks.data.recenttracks['@attr'].total,
+              artists: artists.data.weeklyartistchart.artist.length
+            })
+          }))
+      })
   }
 
   render() {
