@@ -13,7 +13,8 @@ class RecentTracks extends React.Component {
           mbid: '000000',
           artist: {'#text': 'xxxxxxxxx'},
           name: 'xxxxxxxxxxxxxxxxxxxxxxx',
-          url: 'http://interroban.gg'
+          url: 'http://interroban.gg',
+          date: { uts: '0000000' }
         }
       ]
     }
@@ -33,7 +34,12 @@ class RecentTracks extends React.Component {
         <h2>Recent Tracks</h2>
         <ul>
           {this.state.songs.map(song =>
-            <Track id={song.mbid} artist={song.artist['#text']} name={song.name} url={song.url} />
+            <Track
+              id={song.mbid}
+              artist={song.artist['#text']}
+              name={song.name}
+              url={song.url}
+              date={song.date.uts} />
           )}
         </ul>
       </div>
