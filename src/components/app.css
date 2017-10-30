@@ -1,0 +1,10 @@
+.wrapper {
+  composes: font-primary from "../shared/css/typography.css";
+  composes: size-primary from "../shared/css/typography.css";
+  color: rgb(17, 17, 17);
+}
+
+.logo {
+  composes: heading from "../shared/css/typography.css";
+  composes: text-size from "../shared/css/typography.css";
+}

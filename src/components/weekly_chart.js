@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
 import WeeklyCount from './weekly_count.js'
+import styles from './weekly_chart.css'
 
 class WeeklyChart extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class WeeklyChart extends React.Component {
   render() {
     return (
       <section>
-        <h2>This Week</h2>
+        <h2 className={styles.title}>This Week</h2>
         <p>
           <WeeklyCount total={this.state.tracks}/>
           <span> Tracks from </span>
