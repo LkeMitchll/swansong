@@ -1,5 +1,15 @@
 {
+  "name": "swansong",
+  "version": "1.0.0",
+  "license": "GPL-3.0",
+  "description": "A simple last.fm client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LkeMitchll/swansong.git"
+  },
+  "private": true,
   "scripts": {
+    "update": "git submodule init && git submodule update --remote",
     "clean": "rm -rf dist",
     "start": "webpack-dev-server --watch",
     "build": "yarn run clean && webpack",
