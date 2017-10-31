@@ -48,7 +48,7 @@ class WeeklyChart extends React.Component {
           <WeeklyCount total={this.state.artists}/>
           <span> Artists.</span>
         </p>
-        <a className={styles.link} href={ 'https://www.last.fm/user/' + this.props.user }>More</a>
+        <a className={styles.link} href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</a>
       </section>
     )
   }
