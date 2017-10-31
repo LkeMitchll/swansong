@@ -1,7 +1,6 @@
 var path = require('path');
 const context = path.resolve(__dirname, 'src');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 var Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -23,12 +22,12 @@ module.exports = {
         test: /\.js$/
       },
       {
+        test: /\.css$/,
         include: path.resolve(__dirname, './src'),
-        loaders: [
-          'style-loader',
-          'css-loader?importLoader=1&modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader'
-        ],
-        test: /\.css$/
+        use: [
+          { loader: 'style-loader', options: { singleton: true } },
+          { loader: 'css-loader?importLoader=1&modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader' }
+        ]
       },
       {
         loader: 'file-loader?name=fonts/[name].[ext]',
@@ -43,9 +42,6 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.ejs'
-    }),
-    new CopyWebpackPlugin([
-      { from: 'src/assets/fonts', to: 'dist/fonts', toType: 'dir' }
-    ])
+    })
   ]
 };
