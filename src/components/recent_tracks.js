@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
-import Track from './track.js'
+ import Track from './track.js'
 import styles from './recent_tracks.css'
 
 class RecentTracks extends React.Component {
@@ -33,7 +33,7 @@ class RecentTracks extends React.Component {
   render() {
     return (
       <section className={styles.wrapper}>
-        <h2 className={styles.title}>Recent Tracks</h2>
+        <h2 className={styles.title}>Recent Tracks ({this.props.limit})</h2>
         <ul className={styles.list}>
           {this.state.songs.map((song, key) =>
             <Track

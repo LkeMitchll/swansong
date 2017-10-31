@@ -5,7 +5,7 @@ import urlConstructor from '../shared/url_constructor.js'
 import WeeklyCount from './weekly_count.js'
 import styles from './weekly_chart.css'
 
-class WeeklyChart extends React.Component {
+class LastWeek extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -55,8 +55,8 @@ class WeeklyChart extends React.Component {
   }
 }
 
-WeeklyChart.propTypes = {
+LastWeek.propTypes = {
   user: PropTypes.string
 }
 
-export default WeeklyChart
+export default LastWeek
