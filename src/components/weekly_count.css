@@ -1,5 +1,5 @@
 .data {
-  composes: heading from "../shared/css/typography.css";
+  composes: font-bold from "../shared/css/typography.css";
 
   font-size: 2.8rem;
 }
