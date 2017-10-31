@@ -1,7 +1,13 @@
 .link {
   composes: color-primary from "../shared/css/typography.css";
+  margin-right: 1.5rem;
 
   &:hover {
     text-decoration: none;
   }
+}
+
+.date {
+  composes: font-secondary from "../shared/css/typography.css";
+  opacity: 0.5;
 }

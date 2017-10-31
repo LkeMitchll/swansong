@@ -43,6 +43,10 @@
   font-weight: 400;
 }
 
+.font-secondary {
+  font-family: "Courier Prime Medium", Courier, Monaco, monospace;
+}
+
 .heading {
   font-family: "Tiempos Text Semibold", Times New Roman, system-ui;
   font-weight: 600;
