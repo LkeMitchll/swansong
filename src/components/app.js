@@ -1,6 +1,7 @@
 import React from 'react'
 import WeeklyChart from './weekly_chart.js'
 import RecentTracks from './recent_tracks.js'
+import Footer from './footer.js'
 import styles from './app.css'
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
           <h1 className={styles.logo}>Swansong</h1>
           <WeeklyChart user='luke--mitchell'/>
           <RecentTracks user='luke--mitchell' limit='20'/>
+          <Footer />
         </div>
       </div>
     )

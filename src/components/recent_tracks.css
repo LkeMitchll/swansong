@@ -1,3 +1,7 @@
+.wrapper {
+  composes: spacing-large from "../shared/css/layout.css";
+}
+
 .title {
   composes: heading from "../shared/css/typography.css";
   composes: spacing-primary from "../shared/css/layout.css";

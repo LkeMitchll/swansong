@@ -34,6 +34,10 @@
   font-size: 1.4rem;
 }
 
+.size-secondary {
+  font-size: 1.2rem;
+}
+
 .color-primary {
   color: rgb(17, 17, 17);
 }

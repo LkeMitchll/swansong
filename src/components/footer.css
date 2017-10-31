@@ -1,0 +1,12 @@
+.wrapper {
+  composes: font-secondary from "../shared/css/typography.css";
+  composes: size-secondary from "../shared/css/typography.css";
+}
+
+.link {
+  composes: color-primary from "../shared/css/typography.css";
+
+  &:hover {
+    text-decoration: none;
+  }
+}

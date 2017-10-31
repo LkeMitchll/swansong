@@ -31,7 +31,7 @@ class RecentTracks extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className={styles.wrapper}>
         <h2 className={styles.title}>Recent Tracks</h2>
         <ul className={styles.list}>
           {this.state.songs.map((song, key) =>
