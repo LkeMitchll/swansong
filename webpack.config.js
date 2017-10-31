@@ -44,7 +44,8 @@ module.exports = {
       systemvars: true
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs'
+      template: 'src/index.ejs',
+      title: 'Swansong'
     }),
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
