@@ -1,3 +1,5 @@
+/* eslint-disable */
+const webpack = require('webpack');
 var path = require('path');
 const context = path.resolve(__dirname, 'src');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -42,6 +44,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.ejs'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
     })
   ]
 };
