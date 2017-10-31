@@ -2,6 +2,16 @@
   composes: heading from "../shared/css/typography.css";
 }
 
+.wrapper {
+  composes: flex from "../shared/css/layout.css";
+
+  align-items: center;
+}
+
+.part {
+  composes: mr-primary from "../shared/css/layout.css";
+}
+
 .link {
   composes: color-primary from "../shared/css/typography.css";
 
