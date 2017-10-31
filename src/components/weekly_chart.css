@@ -1,9 +1,15 @@
-.title {
-  composes: heading from "../shared/css/typography.css";
+.wrapper {
+  composes: spacing-large from "../shared/css/layout.css";
 }
 
-.wrapper {
+.title {
+  composes: heading from "../shared/css/typography.css";
+  composes: spacing-primary from "../shared/css/layout.css";
+}
+
+.content {
   composes: flex from "../shared/css/layout.css";
+  composes: spacing-primary from "../shared/css/layout.css";
 
   align-items: center;
 }

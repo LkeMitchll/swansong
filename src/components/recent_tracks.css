@@ -1,5 +1,6 @@
 .title {
   composes: heading from "../shared/css/typography.css";
+  composes: spacing-primary from "../shared/css/layout.css";
 }
 
 .list {

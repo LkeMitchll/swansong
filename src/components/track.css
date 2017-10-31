@@ -1,6 +1,6 @@
 .link {
   composes: color-primary from "../shared/css/typography.css";
-  margin-right: 1.5rem;
+  composes: mr-primary from "../shared/css/layout.css";
 
   &:hover {
     text-decoration: none;

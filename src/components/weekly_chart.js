@@ -38,9 +38,9 @@ class WeeklyChart extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className={styles.wrapper}>
         <h2 className={styles.title}>This Week</h2>
-        <p className={styles.wrapper}>
+        <p className={styles.content}>
           <WeeklyCount total={this.state.tracks}/>
           <span className={styles.part}> Tracks from </span>
           <WeeklyCount total={this.state.albums}/>
