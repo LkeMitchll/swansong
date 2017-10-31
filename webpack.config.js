@@ -3,6 +3,7 @@ const webpack = require('webpack');
 var path = require('path');
 const context = path.resolve(__dirname, 'src');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -45,6 +46,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.ejs'
     }),
+    new UglifyJSPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
