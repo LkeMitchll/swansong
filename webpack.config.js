@@ -26,7 +26,7 @@ module.exports = {
         include: path.resolve(__dirname, './src'),
         loaders: [
           'style-loader',
-          'css-loader?importLoader=1&modules&localIdentName=[name]_local]__[hash:base64:5]!postcss-loader'
+          'css-loader?importLoader=1&modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader'
         ],
         test: /\.css$/
       },
