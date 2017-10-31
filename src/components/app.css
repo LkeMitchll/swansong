@@ -1,3 +1,8 @@
+.container {
+  width: 60rem;
+  margin: 0 auto;
+}
+
 .wrapper {
   composes: font-primary from "../shared/css/typography.css";
   composes: size-primary from "../shared/css/typography.css";
@@ -6,7 +11,6 @@
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   max-width: 32em;
-  margin: 0 auto;
 }
 
 .logo {

@@ -31,7 +31,7 @@ class RecentTracks extends React.Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h2 className={styles.title}>Recent Tracks</h2>
         <ul className={styles.list}>
           {this.state.songs.map(song =>
@@ -43,7 +43,7 @@ class RecentTracks extends React.Component {
               date={song.date.uts} />
           )}
         </ul>
-      </div>
+      </section>
     )
   }
 }
