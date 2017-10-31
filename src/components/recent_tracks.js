@@ -34,9 +34,9 @@ class RecentTracks extends React.Component {
       <section>
         <h2 className={styles.title}>Recent Tracks</h2>
         <ul className={styles.list}>
-          {this.state.songs.map(song =>
+          {this.state.songs.map((song, key) =>
             <Track
-              id={song.mbid}
+              key={key}
               artist={song.artist['#text']}
               name={song.name}
               url={song.url}
