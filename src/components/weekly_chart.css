@@ -10,7 +10,6 @@
 .content {
   composes: flex from "../shared/css/layout.css";
   composes: spacing-primary from "../shared/css/layout.css";
-
   align-items: center;
 }
 

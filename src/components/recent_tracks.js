@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
 import Track from './track.js'
@@ -46,6 +47,11 @@ class RecentTracks extends React.Component {
       </section>
     )
   }
+}
+
+RecentTracks.propTypes = {
+  user:PropTypes.string,
+  limit: PropTypes.string
 }
 
 export default RecentTracks

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
 import WeeklyCount from './weekly_count.js'
@@ -28,9 +29,9 @@ class WeeklyChart extends React.Component {
         axios.all([getAlbums, getTracks, getArtists])
           .then(axios.spread((albums, tracks, artists) => {
             _this.setState({
-              albums: albums.data.weeklyalbumchart.album.length,
-              tracks: tracks.data.recenttracks['@attr'].total,
-              artists: artists.data.weeklyartistchart.artist.length
+              albums: albums.data.weeklyalbumchart.album.length.toString(),
+              tracks: tracks.data.recenttracks['@attr'].total.toString(),
+              artists: artists.data.weeklyartistchart.artist.length.toString()
             })
           }))
       })
@@ -52,6 +53,10 @@ class WeeklyChart extends React.Component {
       </section>
     )
   }
+}
+
+WeeklyChart.propTypes = {
+  user: PropTypes.string
 }
 
 export default WeeklyChart
