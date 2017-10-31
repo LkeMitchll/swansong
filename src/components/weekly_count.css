@@ -1,8 +1,5 @@
-.title {
+.data {
   composes: heading from "../shared/css/typography.css";
-}
 
-.list {
-  list-style: none;
-  padding: 0;
+  font-size: 2.8rem;
 }

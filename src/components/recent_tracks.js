@@ -33,7 +33,7 @@ class RecentTracks extends React.Component {
     return (
       <div>
         <h2 className={styles.title}>Recent Tracks</h2>
-        <ul>
+        <ul className={styles.list}>
           {this.state.songs.map(song =>
             <Track
               id={song.mbid}

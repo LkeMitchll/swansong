@@ -26,11 +26,14 @@ module.exports = {
         include: path.resolve(__dirname, './src'),
         loaders: [
           'style-loader',
-          'css-loader?importLoader=1&modules&localIdentName=[name]__[local]___[hash:base64:5]'
+          'css-loader?importLoader=1&modules&localIdentName=[name]_local]__[hash:base64:5]!postcss-loader'
         ],
         test: /\.css$/
       },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'file-loader?name=fonts/[name].[ext]' }
+      {
+        loader: 'file-loader?name=fonts/[name].[ext]',
+        test: /\.(woff|woff2|eot|ttf|svg)$/
+      }
     ]
   },
   plugins: [

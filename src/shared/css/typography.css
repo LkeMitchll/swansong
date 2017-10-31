@@ -34,6 +34,10 @@
   font-size: 1.4rem;
 }
 
+.color-primary {
+  color: rgb(17, 17, 17);
+}
+
 .font-primary {
   font-family: "Tiempos Text Regular", Times New Roman, system-ui;
   font-weight: 400;

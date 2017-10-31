@@ -1,7 +1,3 @@
-.title {
-  composes: heading from "../shared/css/typography.css";
-}
-
 .link {
   composes: color-primary from "../shared/css/typography.css";
 

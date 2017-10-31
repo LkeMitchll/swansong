@@ -1,11 +1,12 @@
 import React from 'react'
 import formatDate from '../shared/format_date.js'
+import styles from './track.css'
 
 class Track extends React.Component {
   render() {
     return (
       <li key={this.props.id}>
-        <a href={this.props.url}>{this.props.artist} - {this.props.name}</a>
+        <a className={styles.link} href={this.props.url}>{this.props.artist} - {this.props.name}</a>
         <span>{formatDate(this.props.date)}</span>
       </li>
     )
