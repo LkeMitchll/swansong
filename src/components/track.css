@@ -1,6 +1,11 @@
 .link {
   composes: color-primary from "../shared/css/typography.css";
   composes: mr-primary from "../shared/css/layout.css";
+  display: inline-block;
+  max-width: 20em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 
   &:hover {
     text-decoration: none;
