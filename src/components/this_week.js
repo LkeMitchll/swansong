@@ -21,6 +21,7 @@ class LastWeek extends React.Component {
       .then(res => {
         this.setState({ tracks: res.data.recenttracks['@attr'].total })
       })
+      .catch(err => { window.alert(`This Week: ${err}`) })
   }
 
   render() {

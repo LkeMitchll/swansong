@@ -28,6 +28,7 @@ class RecentTracks extends React.Component {
         const songs = res.data.recenttracks.track.map(obj => obj)
         this.setState({ songs })
       })
+      .catch(err => { window.alert(`Recent Tracks: ${err}`) })
   }
 
   render() {

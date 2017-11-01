@@ -35,6 +35,7 @@ class LastWeek extends React.Component {
             })
           }))
       })
+      .catch(err => { window.alert(`Last Week: ${err}`) })
   }
 
   render() {
