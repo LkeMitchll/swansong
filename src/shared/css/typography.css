@@ -73,3 +73,11 @@
   font-feature-settings: "smcp" 1;
   text-transform: lowercase;
 }
+
+.link {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

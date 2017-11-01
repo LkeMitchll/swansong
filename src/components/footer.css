@@ -4,9 +4,5 @@
 }
 
 .link {
-  composes: color-primary from "../shared/css/typography.css";
-
-  &:hover {
-    text-decoration: none;
-  }
+  composes: color-primary link from "../shared/css/typography.css";
 }

@@ -1,5 +1,7 @@
+@value small-viewport from "../shared/css/variables.css";
+
 .link {
-  composes: color-primary from "../shared/css/typography.css";
+  composes: color-primary link from "../shared/css/typography.css";
   composes: hspacing-primary from "../shared/css/layout.css";
   display: inline-block;
   max-width: 20em;
@@ -7,12 +9,18 @@
   overflow: hidden;
   white-space: nowrap;
 
-  &:hover {
-    text-decoration: none;
+  @media (max-width: small-viewport) {
+    text-overflow: none;
+    overflow: auto;
+    white-space: normal;
   }
 }
 
 .date {
   composes: font-secondary from "../shared/css/typography.css";
   opacity: 0.5;
+
+  @media (max-width: small-viewport) {
+    display: block;
+  }
 }
