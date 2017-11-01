@@ -1,5 +1,5 @@
 .wrapper {
-  composes: spacing-large from "../shared/css/layout.css";
+  composes: spacing-secondary from "../shared/css/layout.css";
 }
 
 .title {

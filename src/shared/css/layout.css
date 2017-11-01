@@ -13,7 +13,7 @@
   }
 }
 
-.spacing-large {
+.spacing-secondary {
   margin: 0 0 spacing-large;
 
   @media (max-width: small-viewport) {
