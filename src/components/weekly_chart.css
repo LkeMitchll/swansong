@@ -14,7 +14,7 @@
 }
 
 .part {
-  composes: mr-primary from "../shared/css/layout.css";
+  composes: hspacing-primary from "../shared/css/layout.css";
 }
 
 .link {

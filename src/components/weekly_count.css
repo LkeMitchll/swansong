@@ -1,6 +1,14 @@
+@value vars: "../shared/css/variables.css";
+@value spacing-small, small-viewport, font-size, font-size-display from vars;
+
 .data {
   composes: font-bold from "../shared/css/typography.css";
-  composes: mr-primary from "../shared/css/layout.css";
-  font-size: 2.8rem;
+  composes: hspacing-primary from "../shared/css/variables.css";
+  font-size: font-size-display;
   font-feature-settings: "onum" 1;
+  margin-right: spacing-small;
+
+  @media (max-width: small-viewport) {
+    font-size: font-size;
+  }
 }

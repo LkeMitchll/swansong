@@ -1,20 +1,25 @@
+@value vars "../shared/css/variables.css";
+@value site-width, measure, line-height, spacing, spacing-small, spacing-large, small-viewport from vars;
+
 .container {
-  width: 60rem;
   margin: 0 auto;
-  padding: 3.2rem 1.6rem;
+  max-width: site-width;
+  padding: spacing-large spacing;
+
+  @media (max-width: small-viewport) {
+    padding: spacing spacing-small;
+  }
 }
 
 .wrapper {
-  composes: font-primary from "../shared/css/typography.css";
-  composes: size-primary from "../shared/css/typography.css";
+  composes: font-primary size-primary from "../shared/css/typography.css";
   composes: color-primary from "../shared/css/typography.css";
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
-  max-width: 32em;
+  line-height: line-height;
+  max-width: measure;
 }
 
 .logo {
-  composes: font-bold from "../shared/css/typography.css";
-  composes: size-primary from "../shared/css/typography.css";
+  composes: font-bold size-primary from "../shared/css/typography.css";
   composes: spacing-large from "../shared/css/layout.css";
 }

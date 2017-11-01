@@ -1,3 +1,6 @@
+@value vars: "./variables.css";
+@value font-text, font-text-strong, font-alt, font-size, font-size-alt, font-size-small, font-size-xsmall, color-primary, small-viewport from vars;
+
 @font-face {
   font-family: "Tiempos Text Regular";
   font-weight: 400;
@@ -31,34 +34,42 @@
 }
 
 .size-primary {
-  font-size: 1.4rem;
+  font-size: font-size;
+
+  @media (max-width: small-viewport) {
+    font-size: font-size-small;
+  }
 }
 
 .size-secondary {
-  font-size: 1.2rem;
+  font-size: font-size-alt;
+
+  @media (max-width: small-viewport) {
+    font-size: font-size-xsmall;
+  }
 }
 
 .color-primary {
-  color: rgb(17, 17, 17);
+  color: color-primary;
 }
 
 .font-primary {
-  font-family: "Tiempos Text Regular", Times New Roman, system-ui;
+  font-family: font-text;
   font-weight: 400;
 }
 
 .font-bold {
-  font-family: "Tiempos Text Semibold", Times New Roman, system-ui;
+  font-family: font-text-strong;
   font-weight: 600;
 }
 
 .font-secondary {
-  font-family: "Courier Prime Medium", Courier, Monaco, monospace;
+  font-family: font-alt;
 }
 
 .heading {
+  composes: size-primary;
   font-weight: 600;
   font-feature-settings: "smcp" 1;
-  font-size: 1.4rem;
   text-transform: lowercase;
 }

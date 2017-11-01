@@ -29,7 +29,18 @@ module.exports = {
         include: path.resolve(__dirname, './src'),
         use: [
           { loader: 'style-loader', options: { singleton: true } },
-          { loader: 'css-loader?importLoader=1&modules&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader' }
+          { loader: 'css-loader', options: { importLoaders: 1, modules: true, localIdentName: '[name]_[local]__[hash:base64:5]' }},
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: (loader) => [
+                require('postcss-modules-values')(),
+                require('postcss-nested')(),
+                require('postcss-cssnext')()
+              ]
+            }
+          }
         ]
       },
       {

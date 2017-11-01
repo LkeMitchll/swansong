@@ -1,6 +1,6 @@
 .link {
   composes: color-primary from "../shared/css/typography.css";
-  composes: mr-primary from "../shared/css/layout.css";
+  composes: hspacing-primary from "../shared/css/layout.css";
   display: inline-block;
   max-width: 20em;
   text-overflow: ellipsis;
