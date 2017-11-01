@@ -3,6 +3,10 @@
   composes: size-secondary from "../shared/css/typography.css";
 }
 
+.content {
+  composes: spacing-primary from "../shared/css/layout.css";
+}
+
 .link {
   composes: color-primary link from "../shared/css/typography.css";
 }
