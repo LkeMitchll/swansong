@@ -7,8 +7,12 @@ class Track extends React.Component {
   render() {
     return (
       <li key={this.props.id}>
-        <a className={styles.link} href={this.props.url}>{this.props.artist} - {this.props.name}</a>
-        <span className={styles.date}>{formatDate(this.props.date)}</span>
+        <p className={styles.wrapper}>
+          <a className={styles.link} href={this.props.artistURL}>{this.props.artist}</a>
+          <span>&nbsp;&ndash;&nbsp;</span>
+          <a className={styles.link} href={this.props.songURL}>{this.props.name}</a>
+        </p>
+        <p className={styles.date}>{formatDate(this.props.date)}</p>
       </li>
     )
   }
@@ -16,7 +20,8 @@ class Track extends React.Component {
 
 Track.propTypes = {
   id: PropTypes.number,
-  url: PropTypes.string,
+  songURL: PropTypes.string,
+  artistURL: PropTypes.string,
   artist: PropTypes.string,
   name: PropTypes.string,
   date: PropTypes.string

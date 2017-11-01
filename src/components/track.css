@@ -1,8 +1,7 @@
 @value small-viewport from "../shared/css/variables.css";
 
-.link {
-  composes: color-primary link from "../shared/css/typography.css";
-  composes: hspacing-primary from "../shared/css/layout.css";
+.wrapper {
+  composes: spacing-primary hspacing-primary from "../shared/css/layout.css";
   display: inline-block;
   max-width: 20em;
   text-overflow: ellipsis;
@@ -16,8 +15,14 @@
   }
 }
 
+.link {
+  composes: color-primary link from "../shared/css/typography.css";
+}
+
 .date {
   composes: font-secondary from "../shared/css/typography.css";
+  composes: spacing-primary from "../shared/css/layout.css";
+  display: inline-block;
   opacity: 0.5;
 
   @media (max-width: small-viewport) {

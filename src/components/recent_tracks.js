@@ -23,7 +23,7 @@ class RecentTracks extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&limit=${this.props.limit}`))
+    axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&extended=1&limit=${this.props.limit}`))
       .then(res => {
         const songs = res.data.recenttracks.track.map(obj => obj)
         this.setState({ songs })
@@ -39,9 +39,10 @@ class RecentTracks extends React.Component {
           {this.state.songs.map((song, key) =>
             <Track
               key={key}
-              artist={song.artist['#text']}
+              artist={song.artist.name}
               name={song.name}
-              url={song.url}
+              songURL={song.url}
+              artistURL={song.artist.url}
               date={song.date.uts} />
           )}
         </ul>
