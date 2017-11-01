@@ -29,7 +29,15 @@ module.exports = {
         include: path.resolve(__dirname, './src'),
         use: [
           { loader: 'style-loader', options: { singleton: true } },
-          { loader: 'css-loader', options: { importLoaders: 1, modules: true, localIdentName: '[name]_[local]__[hash:base64:5]' }},
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              minimize: true,
+              localIdentName: '[name]_[local]__[hash:base64:5]'
+            }
+          },
           {
             loader: 'postcss-loader',
             options: {
