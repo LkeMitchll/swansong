@@ -43,12 +43,9 @@ class LastWeek extends React.Component {
       <section className={styles.wrapper}>
         <h2 className={styles.title}>Last Week</h2>
         <p className={styles.content}>
-          <WeeklyCount total={this.state.tracks}/>
-          <span className={styles.part}> Tracks from </span>
-          <WeeklyCount total={this.state.albums}/>
-          <span className={styles.part}> Albums and </span>
-          <WeeklyCount total={this.state.artists}/>
-          <span> Artists.</span>
+          <WeeklyCount total={this.state.tracks} suffix="Tracks from"/>
+          <WeeklyCount total={this.state.albums} suffix="Albums and"/>
+          <WeeklyCount total={this.state.artists} suffix="Artists."/>
         </p>
         <a className={styles.link} href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</a>
       </section>

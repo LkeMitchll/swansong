@@ -12,3 +12,7 @@
     font-size: font-size;
   }
 }
+
+.part {
+  composes: hspacing-primary from "../shared/css/layout.css";
+}

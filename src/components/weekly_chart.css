@@ -1,3 +1,5 @@
+@value small-viewport from "../shared/css/variables.css";
+
 .wrapper {
   composes: spacing-secondary from "../shared/css/layout.css";
 }
@@ -10,11 +12,8 @@
 .content {
   composes: flex from "../shared/css/layout.css";
   composes: spacing-primary from "../shared/css/layout.css";
+  flex-wrap: wrap;
   align-items: center;
-}
-
-.part {
-  composes: hspacing-primary from "../shared/css/layout.css";
 }
 
 .link {

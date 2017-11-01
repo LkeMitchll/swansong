@@ -29,8 +29,7 @@ class LastWeek extends React.Component {
       <section className={styles.wrapper}>
         <h2 className={styles.title}>This Week</h2>
         <p className={styles.content}>
-          <WeeklyCount total={this.state.tracks}/>
-          <span className={styles.part}> Tracks so far.</span>
+          <WeeklyCount total={this.state.tracks} suffix="Tracks so far"/>
         </p>
       </section>
     )
