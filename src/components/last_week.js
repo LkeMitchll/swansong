@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
+import * as Epoch from '../shared/sunday_epoch'
 import WeeklyCount from './weekly_count.js'
 import styles from './weekly_chart.css'
 
@@ -16,26 +17,21 @@ class LastWeek extends React.Component {
   }
 
   componentDidMount() {
-    var _this = this
-    axios.get(urlConstructor('user.getweeklychartlist', this.props.user, ''))
-      .then(res => {
-        var weeks = res.data.weeklychartlist.chart.map(obj => obj)
-        var week = weeks[weeks.length - 1]
+    var from = Epoch.getStartOfLastWeek(new Date)
+    var to = Epoch.getEndOfLastWeek(new Date)
 
-        const getAlbums = axios.get(urlConstructor('user.getweeklyalbumchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
-        const getTracks = axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${week['from']}&to=${week['to']}`))
-        const getArtists = axios.get(urlConstructor('user.getweeklyartistchart', this.props.user, `&from=${week['from']}&to=${week['to']}`))
+    const getAlbums = axios.get(urlConstructor('user.getweeklyalbumchart', this.props.user, ''))
+    const getTracks = axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${from}&to=${to}`))
+    const getArtists = axios.get(urlConstructor('user.getweeklyartistchart', this.props.user, ''))
 
-        axios.all([getAlbums, getTracks, getArtists])
-          .then(axios.spread((albums, tracks, artists) => {
-            _this.setState({
-              albums: albums.data.weeklyalbumchart.album.length.toString(),
-              tracks: tracks.data.recenttracks['@attr'].total.toString(),
-              artists: artists.data.weeklyartistchart.artist.length.toString()
-            })
-          }))
-      })
-      .catch(err => { window.alert(`Last Week: ${err}`) })
+    axios.all([getAlbums, getTracks, getArtists])
+      .then(axios.spread((albums, tracks, artists) => {
+        this.setState({
+          albums: albums.data.weeklyalbumchart.album.length.toString(),
+          tracks: tracks.data.recenttracks['@attr'].total.toString(),
+          artists: artists.data.weeklyartistchart.artist.length.toString()
+        })
+      }))
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import getSundayEpoch from '../shared/sunday_epoch.js'
+import * as Epoch from '../shared/sunday_epoch.js'
 import urlConstructor from '../shared/url_constructor.js'
 import WeeklyCount from './weekly_count.js'
 import styles from './weekly_chart.css'
@@ -15,7 +15,7 @@ class LastWeek extends React.Component {
   }
 
   componentDidMount() {
-    var epoch = getSundayEpoch(new Date)
+    var epoch = Epoch.getEndOfLastWeek(new Date)
 
     axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${epoch}`))
       .then(res => {
