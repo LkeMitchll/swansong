@@ -10,16 +10,8 @@ class RecentTracks extends React.Component {
     super(props)
 
     this.state = {
-      songs: [
-        {
-          key: 1,
-          artist: { name: 'xxxxxxxxx' },
-          name: 'xxxxxxxxxxxxxxxxxxxxxxx',
-          songURL: 'http://interroban.gg',
-          artistURL: 'http://interroban.gg',
-          date: { uts: '0000000000' }
-        }
-      ]
+      nowplaying: [],
+      songs: []
     }
   }
 
@@ -27,17 +19,31 @@ class RecentTracks extends React.Component {
     axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&extended=1&limit=${this.props.limit}`))
       .then(res => {
         const songs = res.data.recenttracks.track.map(obj => obj)
-        this.setState({ songs })
+
+        if (songs[0]['@attr']) {
+          this.setState({ nowplaying: [songs[0]], songs: songs.slice(1, songs.length) })
+        } else {
+          this.setState({ songs })
+        }
+
       })
       .catch(err => { window.alert(`Recent Tracks: ${err}`) })
   }
 
   render() {
-    console.log(this.state.songs)
     return (
       <section className={styles.wrapper}>
         <h2 className={styles.title}>Recent Tracks ({this.props.limit})</h2>
         <ul className={styles.list}>
+          {this.state.nowplaying.map((song, key) =>
+            <Track
+              nowplaying="true"
+              key={key}
+              artist={song.artist.name}
+              name={song.name}
+              songURL={song.url}
+              artistURL={song.artist.url} />
+          )}
           {this.state.songs.map((song, key) =>
             <Track
               key={key}

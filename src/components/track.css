@@ -19,7 +19,7 @@
   composes: color-primary link from "../shared/css/typography.css";
 }
 
-.date {
+.meta {
   composes: font-secondary from "../shared/css/typography.css";
   composes: spacing-primary from "../shared/css/layout.css";
   display: inline-block;
