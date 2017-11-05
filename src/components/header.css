@@ -1,0 +1,4 @@
+.logo {
+  composes: spacing-secondary from "../shared/css/layout.css";
+  composes: font-bold size-primary from "../shared/css/typography.css";
+}
