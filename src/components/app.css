@@ -4,11 +4,6 @@
 .container {
   margin: 0 auto;
   max-width: site-width;
-  padding: spacing-large spacing;
-
-  @media (max-width: small-viewport) {
-    padding: spacing spacing-small;
-  }
 }
 
 .wrapper {
@@ -17,6 +12,11 @@
   -webkit-font-smoothing: antialiased;
   line-height: line-height;
   max-width: measure;
+  padding: spacing-large spacing;
+
+  @media (max-width: small-viewport) {
+    padding: spacing spacing-small;
+  }
 }
 
 .logo {
