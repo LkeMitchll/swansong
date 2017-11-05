@@ -1,6 +1,11 @@
 @value vars: "../shared/css/variables.css";
 @value spacing-small, small-viewport, font-size, font-size-display from vars;
 
+.wrapper {
+  composes: flex from "../shared/css/layout.css";
+  align-items: center;
+}
+
 .data {
   composes: font-bold from "../shared/css/typography.css";
   composes: hspacing-primary from "../shared/css/variables.css";
