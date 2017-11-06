@@ -24,3 +24,6 @@ The site is deployed with [dokku][dokku] using a `Dockerfile`, to test the deplo
 3. Run `yarn run docker:start`
 4. Open `http://localhost:1337` in a browser.
 5. Stop the container with `docker stop [id]`
+
+[dokku]: https://github.com/dokku/dokku
+[docker]: https://www.docker.com
