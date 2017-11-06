@@ -43,7 +43,6 @@ class LastWeek extends React.Component {
           <WeeklyCount total={this.state.albums} suffix="Albums and"/>
           <WeeklyCount total={this.state.artists} suffix="Artists."/>
         </p>
-        <a className={styles.link} href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</a>
       </section>
     )
   }

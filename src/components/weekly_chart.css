@@ -1,4 +1,4 @@
-@value small-viewport from "../shared/css/variables.css";
+@value small-viewport, spacing-small from "../shared/css/variables.css";
 
 .wrapper {
   composes: spacing-secondary from "../shared/css/layout.css";
@@ -6,15 +6,21 @@
 
 .title {
   composes: heading from "../shared/css/typography.css";
-  composes: spacing-primary from "../shared/css/layout.css";
+  margin-bottom: 0;
+
+  @media (max-width: small-viewport) {
+    margin-bottom: spacing-small;
+  }
 }
 
 .content {
   composes: flex from "../shared/css/layout.css";
   composes: spacing-primary from "../shared/css/layout.css";
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .link {
   composes: color-primary link from "../shared/css/typography.css";
+  margin-left: spacing-small;
 }
