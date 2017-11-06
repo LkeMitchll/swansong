@@ -33,7 +33,7 @@ class RecentTracks extends React.Component {
   render() {
     return (
       <section className={styles.wrapper}>
-        <h2 className={styles.title}>Recent Tracks ({this.props.limit})</h2>
+        <h2 className={styles.title}>Recent Tracks</h2>
         <ul className={styles.list}>
           {this.state.nowplaying.map((song, key) =>
             <Track
