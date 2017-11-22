@@ -1,31 +1,32 @@
-@value small-viewport from "../shared/css/variables.css";
+@value font-alt, font-size-alt, font-size-small, color-primary, spacing-small, small-viewport from "../shared/css/variables.css";
 
 .wrapper {
-  composes: spacing-primary hspacing-primary from "../shared/css/layout.css";
-  display: inline-block;
-  max-width: 20em;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  border-bottom: 1px solid color-primary;
+  padding: spacing-small;
 
   @media (max-width: small-viewport) {
-    text-overflow: none;
-    overflow: auto;
-    white-space: normal;
+    padding: 0;
+    display: block;
+    width: 100%;
+    border-bottom: 0;
+  }
+}
+
+.link,
+.meta {
+  composes: font-secondary from "../shared/css/typography.css";
+  color: color-primary;
+  font-size: font-size-alt;
+
+  @media (max-width: small-viewport) {
+    font-size: font-size-small;
   }
 }
 
 .link {
-  composes: color-primary link from "../shared/css/typography.css";
+  composes: link from "../shared/css/typography.css";
 }
 
 .meta {
-  composes: font-secondary from "../shared/css/typography.css";
-  composes: spacing-primary from "../shared/css/layout.css";
-  display: inline-block;
-  opacity: 0.5;
-
-  @media (max-width: small-viewport) {
-    display: block;
-  }
+  opacity: 0.6;
 }

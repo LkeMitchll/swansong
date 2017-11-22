@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
+import Wrapper from './wrapper.js'
+import Subheading from './subheading.js'
 import Track from './track.js'
 import styles from './recent_tracks.css'
 
@@ -32,29 +34,41 @@ class RecentTracks extends React.Component {
 
   render() {
     return (
-      <section className={styles.wrapper}>
-        <h2 className={styles.title}>Recent Tracks</h2>
-        <ul className={styles.list}>
-          {this.state.nowplaying.map((song, key) =>
-            <Track
-              nowplaying="true"
-              key={key}
-              artist={song.artist.name}
-              name={song.name}
-              songURL={song.url}
-              artistURL={song.artist.url} />
-          )}
-          {this.state.songs.map((song, key) =>
-            <Track
-              key={key}
-              artist={song.artist.name}
-              name={song.name}
-              songURL={song.url}
-              artistURL={song.artist.url}
-              date={song.date.uts} />
-          )}
-        </ul>
-      </section>
+      <div>
+        <Wrapper styleOverride={styles.subheading}>
+          <Subheading>Recent Tracks</Subheading>
+        </Wrapper>
+
+        <table className={styles.wrapper}>
+          <thead>
+            <tr>
+              <th className={[styles.heading, styles.alignment].join(' ')}>Time (Date)</th>
+              <th className={styles.heading}>Artist</th>
+              <th className={styles.heading}>Track</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.nowplaying.map((song, key) =>
+              <Track
+                nowplaying="true"
+                key={key}
+                artist={song.artist.name}
+                name={song.name}
+                songURL={song.url}
+                artistURL={song.artist.url} />
+            )}
+            {this.state.songs.map((song, key) =>
+              <Track
+                key={key}
+                artist={song.artist.name}
+                name={song.name}
+                songURL={song.url}
+                artistURL={song.artist.url}
+                date={song.date.uts} />
+            )}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }

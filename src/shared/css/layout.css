@@ -1,5 +1,5 @@
 @value vars: "./variables.css";
-@value spacing, spacing-small, spacing-large, small-viewport from vars;
+@value spacing, spacing-small, spacing-large, line-height, small-viewport from vars;
 
 .flex {
   display: flex;
@@ -23,4 +23,17 @@
 
 .hspacing-primary {
   margin-right: spacing-small;
+}
+
+.wrapper {
+  composes: font-primary size-primary from "./typography.css";
+  composes: color-primary from "./typography.css";
+  -webkit-font-smoothing: antialiased;
+  line-height: line-height;
+  margin: 0 auto;
+  padding: 0 spacing;
+
+  @media (max-width: small-viewport) {
+    padding: 0 spacing-small;
+  }
 }

@@ -1,20 +1,10 @@
-@value vars "../shared/css/variables.css";
-@value site-width, measure, line-height, spacing, spacing-small, spacing-large, small-viewport from vars;
+@value spacing-small, spacing-large, small-viewport from "../shared/css/variables.css";
 
 .container {
-  margin: 0 auto;
-  max-width: site-width;
-}
-
-.wrapper {
-  composes: font-primary size-primary from "../shared/css/typography.css";
-  composes: color-primary from "../shared/css/typography.css";
-  -webkit-font-smoothing: antialiased;
-  line-height: line-height;
-  max-width: measure;
-  padding: spacing-large spacing;
+  padding: spacing-large 0;
+  width: 100%;
 
   @media (max-width: small-viewport) {
-    padding: spacing spacing-small;
+    padding: spacing-small 0;
   }
 }

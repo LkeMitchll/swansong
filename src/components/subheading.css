@@ -1,0 +1,10 @@
+@value small-viewport, spacing-small from "../shared/css/variables.css";
+
+.root {
+  composes: heading from "../shared/css/typography.css";
+  margin-bottom: 0;
+
+  @media (max-width: small-viewport) {
+    margin-bottom: spacing-small;
+  }
+}

@@ -1,4 +1,6 @@
 import React from 'react'
+import Wrapper from './wrapper.js'
+import WrapperWide from './wrapper_wide.js'
 import Header from './header.js'
 import LastWeek from './last_week.js'
 import ThisWeek from './this_week.js'
@@ -10,13 +12,17 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.wrapper}>
+        <Wrapper>
           <Header />
           <LastWeek user='luke--mitchell'/>
           <ThisWeek user='luke--mitchell'/>
+        </Wrapper>
+        <WrapperWide>
           <RecentTracks user='luke--mitchell' limit='20'/>
+        </WrapperWide>
+        <Wrapper>
           <Footer />
-        </div>
+        </Wrapper>
       </div>
     )
   }

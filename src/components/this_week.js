@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import * as Epoch from '../shared/sunday_epoch.js'
 import urlConstructor from '../shared/url_constructor.js'
+import Subheading from './subheading.js'
 import WeeklyCount from './weekly_count.js'
 import styles from './weekly_chart.css'
 
@@ -26,14 +27,14 @@ class LastWeek extends React.Component {
 
   render() {
     return (
-      <section className={styles.wrapper}>
-        <h2 className={styles.title}>This Week</h2>
+      <div className={styles.wrapper}>
+        <Subheading>This Week</Subheading>
         <p className={styles.content}>
           <WeeklyCount total={this.state.tracks} suffix="Tracks so far"/>
           &ndash;
           <a className={styles.link} href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</a>
         </p>
-      </section>
+      </div>
     )
   }
 }

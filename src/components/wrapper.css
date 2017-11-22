@@ -1,0 +1,22 @@
+@value vars: "../shared/css/variables.css";
+@value measure, small-viewport from vars;
+
+.measure {
+  composes: wrapper from "../shared/css/layout.css";
+  max-width: measure;
+  margin-left: 20%;
+
+  @media (max-width: small-viewport) {
+    margin: 0;
+  }
+}
+
+.wide {
+  composes: wrapper from "../shared/css/layout.css";
+  box-sizing: border-box;
+
+  @media (max-width: small-viewport) {
+    margin: 0;
+    max-width: measure;
+  }
+}

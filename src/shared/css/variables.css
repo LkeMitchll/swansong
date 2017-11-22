@@ -14,7 +14,7 @@
 @value spacing-small: calc(spacing / 2);
 @value spacing-large: calc(spacing * 2);
 @value spacing-xlarge: calc(spacing * 4);
-@value color-primary: rgb(17, 17, 17);
+@value color-primary: rgb(74, 74, 74);
 @value color-secondary: rgb(255, 255, 255);
 @value transition-duration: 0.5s;
 @value small-viewport: 50em;

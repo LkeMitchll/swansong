@@ -22,14 +22,17 @@ class Track extends React.Component {
 
   render() {
     return (
-      <li key={this.props.id}>
-        <p className={styles.wrapper}>
+      <tr key={this.props.id}>
+        <td className={styles.wrapper}>
+          <p className={styles.meta}>{this.state.meta}</p>
+        </td>
+        <td className={styles.wrapper}>
           <a className={styles.link} href={this.props.artistURL}>{this.props.artist}</a>
-          <span>&nbsp;&ndash;&nbsp;</span>
+        </td>
+        <td className={styles.wrapper}>
           <a className={styles.link} href={this.props.songURL}>{this.props.name}</a>
-        </p>
-        <p className={styles.meta}>{this.state.meta}</p>
-      </li>
+        </td>
+      </tr>
     )
   }
 }
