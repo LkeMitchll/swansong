@@ -42,7 +42,7 @@ class RecentTracks extends React.Component {
         <table className={styles.wrapper}>
           <thead>
             <tr>
-              <th className={[styles.heading, styles.alignment].join(' ')}>Time (Date)</th>
+              <th className={[styles.heading, styles.alignment].join(' ')}>Date (Time)</th>
               <th className={styles.heading}>Artist</th>
               <th className={styles.heading}>Track</th>
             </tr>
