@@ -31,7 +31,7 @@
   -webkit-font-smoothing: antialiased;
   line-height: line-height;
   margin: 0 auto;
-  padding: 0 spacing;
+  padding: 0 spacing-large;
 
   @media (max-width: small-viewport) {
     padding: 0 spacing-small;
