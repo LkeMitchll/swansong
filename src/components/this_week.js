@@ -1,13 +1,27 @@
 import React from 'react'
+import styled from 'react-emotion'
+import { ds } from '../shared/design_system'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import * as Epoch from '../shared/sunday_epoch.js'
 import urlConstructor from '../shared/url_constructor.js'
 import Subheading from './subheading.js'
+import WeekWrapper from './week_wrapper.js'
 import WeeklyCount from './weekly_count.js'
-import styles from './weekly_chart.css'
 
-class LastWeek extends React.Component {
+const Link = styled.a`
+  font-family: ${ds.get('type.fonts.base')};
+  font-weight: ${ds.get('type.fontWeight.base')};
+  color: ${ds.brand('primary')};
+  margin-left: ${ds.get('spacing.base')};
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+`
+
+class ThisWeek extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,20 +41,20 @@ class LastWeek extends React.Component {
 
   render() {
     return (
-      <div className={styles.wrapper}>
+      <div>
         <Subheading>This Week</Subheading>
-        <p className={styles.content}>
+        <WeekWrapper>
           <WeeklyCount total={this.state.tracks} suffix="Tracks so far"/>
           &ndash;
-          <a className={styles.link} href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</a>
-        </p>
+          <Link href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</Link>
+        </WeekWrapper>
       </div>
     )
   }
 }
 
-LastWeek.propTypes = {
+ThisWeek.propTypes = {
   user: PropTypes.string
 }
 
-export default LastWeek
+export default ThisWeek

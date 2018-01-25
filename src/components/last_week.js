@@ -4,8 +4,8 @@ import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
 import * as Epoch from '../shared/sunday_epoch'
 import Subheading from './subheading.js'
+import WeekWrapper from './week_wrapper.js'
 import WeeklyCount from './weekly_count.js'
-import styles from './weekly_chart.css'
 
 class LastWeek extends React.Component {
   constructor(props) {
@@ -37,13 +37,13 @@ class LastWeek extends React.Component {
 
   render() {
     return (
-      <div className={styles.wrapper}>
+      <div>
         <Subheading>Last Week</Subheading>
-        <p className={styles.content}>
+        <WeekWrapper>
           <WeeklyCount total={this.state.tracks} suffix="Tracks from"/>
           <WeeklyCount total={this.state.albums} suffix="Albums and"/>
           <WeeklyCount total={this.state.artists} suffix="Artists."/>
-        </p>
+        </WeekWrapper>
       </div>
     )
   }

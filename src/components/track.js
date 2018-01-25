@@ -1,7 +1,18 @@
 import React from 'react'
+import styled from 'react-emotion'
+import { ds } from '../shared/design_system.js'
+import TableCell from './table_cell.js'
 import PropTypes from 'prop-types'
 import formatDate from '../shared/format_date.js'
-import styles from './track.css'
+
+const Link = styled.a`
+  color: ${ds.brand('primary')};
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+`
 
 class Track extends React.Component {
   constructor(props) {
@@ -23,15 +34,15 @@ class Track extends React.Component {
   render() {
     return (
       <tr key={this.props.id}>
-        <td className={styles.wrapper}>
-          <p className={styles.meta}>{this.state.meta}</p>
-        </td>
-        <td className={styles.wrapper}>
-          <a className={styles.link} href={this.props.artistURL}>{this.props.artist}</a>
-        </td>
-        <td className={styles.wrapper}>
-          <a className={styles.link} href={this.props.songURL}>{this.props.name}</a>
-        </td>
+        <TableCell faded>
+          <p>{this.state.meta}</p>
+        </TableCell>
+        <TableCell>
+          <Link href={this.props.artistURL}>{this.props.artist}</Link>
+        </TableCell>
+        <TableCell>
+          <Link href={this.props.songURL}>{this.props.name}</Link>
+        </TableCell>
       </tr>
     )
   }

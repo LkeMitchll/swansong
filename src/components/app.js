@@ -1,29 +1,37 @@
 import React from 'react'
+import styled from 'react-emotion'
+import { ds } from '../shared/design_system'
 import Wrapper from './wrapper.js'
-import WrapperWide from './wrapper_wide.js'
 import Header from './header.js'
 import LastWeek from './last_week.js'
 import ThisWeek from './this_week.js'
 import RecentTracks from './recent_tracks.js'
 import Footer from './footer.js'
-import styles from './app.css'
+
+const Container = styled.div`
+  padding: ${ds.get('spacing.l')};
+
+  @media (max-width: ${ds.bp('s')}) {
+    padding: ${ds.get('spacing.base')};
+  }
+`
 
 class App extends React.Component {
   render() {
     return (
-      <div className={styles.container}>
+      <Container>
         <Wrapper>
           <Header />
           <LastWeek user='luke--mitchell'/>
           <ThisWeek user='luke--mitchell'/>
         </Wrapper>
-        <WrapperWide>
+        <Wrapper wide>
           <RecentTracks user='luke--mitchell' limit='20'/>
-        </WrapperWide>
+        </Wrapper>
         <Wrapper>
           <Footer />
         </Wrapper>
-      </div>
+      </Container>
     )
   }
 }

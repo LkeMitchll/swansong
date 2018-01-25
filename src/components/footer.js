@@ -1,19 +1,35 @@
 import React from 'react'
-import styles from './footer.css'
+import styled from 'react-emotion'
+import { ds } from '../shared/design_system'
+
+const Wrapper = styled.footer`
+  font-family: ${ds.get('type.fonts.alt')};
+  font-size: ${ds.fs('alt')};
+  margin-bottom: ${ds.get('spacing.l')};
+`
+
+const Link = styled.a`
+  color: ${ds.brand('primary')};
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+`
 
 class Footer extends React.Component {
   render () {
     return (
-      <footer className={styles.wrapper}>
-        <p className={styles.content}>An <a className={styles.link} href="http://interroban.gg">interroban.gg</a> project</p>
-        <p className={styles.content}>
-          Set in <a className={styles.link} href="https://klim.co.nz/retail-fonts/tiempos-text/">Tiempos Text</a> &amp; <a className={styles.link} href="https://quoteunquoteapps.com/courierprime/">Courier Prime</a>.
+      <Wrapper>
+        <p>An <Link>interroban.gg</Link> project</p>
+        <p>
+          Set in <Link>Tiempos Text</Link> &amp; <Link>Courier Prime</Link>.
           <br/>
-          Data from <a className={styles.link} href="https://www.last.fm/api">last.fm</a>.
+          Data from <Link>last.fm</Link>.
           <br/>
-          Source code hosted at <a className={styles.link} href="https://github.com/LkeMitchll/swansong">GitHub</a>.
+          Source code hosted at <Link>GitHub</Link>.
         </p>
-      </footer>
+      </Wrapper>
     )
   }
 }

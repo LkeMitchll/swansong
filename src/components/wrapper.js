@@ -1,19 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './wrapper.css'
+import styled from 'react-emotion'
+import { ds } from '../shared/design_system.js'
+
+export const Section = styled.section`
+  max-width: ${props => props.wide ? 'unset' : ds.get('measure')};
+  margin: 0 auto 0 ${props => props.wide ? '0' : '20%'};
+  padding: 0 ${props => props.nested ? ds.get('spacing.l') : null};
+
+  @media (max-width: ${ds.bp('s')}) {
+    padding: 0;
+    margin: 0;
+  }
+`
 
 class Wrapper extends React.Component {
   render() {
     return (
-      <section className={[styles.measure, this.props.styleOverride].join(' ')}>
+      <Section wide={this.props.wide}>
         {this.props.children}
-      </section>
+      </Section>
     )
   }
 }
 
 Wrapper.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
+  wide: PropTypes.bool,
+  nested: PropTypes.bool
 }
 
 export default Wrapper

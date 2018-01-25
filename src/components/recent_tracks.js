@@ -1,11 +1,20 @@
 import React from 'react'
+import styled from 'react-emotion'
+import { ds } from '../shared/design_system'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import urlConstructor from '../shared/url_constructor.js'
 import Wrapper from './wrapper.js'
 import Subheading from './subheading.js'
+import TableCell from './table_cell.js'
 import Track from './track.js'
-import styles from './recent_tracks.css'
+
+const Table = styled.table`
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-bottom: ${ds.get('spacing.l')};
+`
 
 class RecentTracks extends React.Component {
   constructor(props) {
@@ -35,16 +44,16 @@ class RecentTracks extends React.Component {
   render() {
     return (
       <div>
-        <Wrapper styleOverride={styles.subheading}>
+        <Wrapper nested>
           <Subheading>Recent Tracks</Subheading>
         </Wrapper>
 
-        <table className={styles.wrapper}>
+        <Table>
           <thead>
             <tr>
-              <th className={[styles.heading, styles.alignment].join(' ')}>Date (Time)</th>
-              <th className={styles.heading}>Artist</th>
-              <th className={styles.heading}>Track</th>
+              <TableCell faded header width="20%">Date (Time)</TableCell>
+              <TableCell faded header>Artist</TableCell>
+              <TableCell faded header>Track</TableCell>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +76,7 @@ class RecentTracks extends React.Component {
                 date={song.date.uts} />
             )}
           </tbody>
-        </table>
+        </Table>
       </div>
     )
   }
