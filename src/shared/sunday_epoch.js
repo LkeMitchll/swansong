@@ -1,3 +1,8 @@
+export const getNow = () => {
+  var epoch = Math.round((new Date).getTime() / 1000)
+  return epoch
+}
+
 export const getStartOfLastWeek = (now) => {
   var d = now
   d.setHours(0,0,0,0)

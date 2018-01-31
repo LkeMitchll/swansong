@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import { ds } from '../shared/design_system'
-import PropTypes from 'prop-types'
 import axios from 'axios'
-import urlConstructor from '../shared/url_constructor.js'
 import Wrapper from './wrapper.js'
 import Subheading from './subheading.js'
 import TableCell from './table_cell.js'
@@ -27,7 +25,7 @@ class RecentTracks extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&extended=1&limit=${this.props.limit}`))
+    axios.get(`${process.env.API_URL}/recent_tracks`)
       .then(res => {
         const songs = res.data.recenttracks.track.map(obj => obj)
 
@@ -80,11 +78,6 @@ class RecentTracks extends React.Component {
       </div>
     )
   }
-}
-
-RecentTracks.propTypes = {
-  user:PropTypes.string,
-  limit: PropTypes.string
 }
 
 export default RecentTracks

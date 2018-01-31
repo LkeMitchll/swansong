@@ -22,11 +22,11 @@ class App extends React.Component {
       <Container>
         <Wrapper>
           <Header />
-          <LastWeek user='luke--mitchell'/>
-          <ThisWeek user='luke--mitchell'/>
+          <LastWeek />
+          <ThisWeek />
         </Wrapper>
         <Wrapper wide>
-          <RecentTracks user='luke--mitchell' limit='20'/>
+          <RecentTracks />
         </Wrapper>
         <Wrapper>
           <Footer />

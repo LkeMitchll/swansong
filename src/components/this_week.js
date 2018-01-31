@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
 import { ds } from '../shared/design_system'
-import PropTypes from 'prop-types'
 import axios from 'axios'
 import * as Epoch from '../shared/sunday_epoch.js'
-import urlConstructor from '../shared/url_constructor.js'
 import Loading from './loading.js'
 import Subheading from './subheading.js'
 import WeekWrapper from './week_wrapper.js'
@@ -31,12 +29,13 @@ class ThisWeek extends React.Component {
   }
 
   componentDidMount() {
-    var epoch = Epoch.getEndOfLastWeek(new Date)
+    var from = Epoch.getEndOfLastWeek(new Date)
+    var to = Epoch.getNow()
 
-    axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${epoch}`))
+    axios.get(`${process.env.API_URL}/recent_tracks/total/${from}.${to}`)
       .then(res => {
         this.setState({
-          tracks: res.data.recenttracks['@attr'].total,
+          tracks: res.data,
           loading: false
         })
       })
@@ -59,7 +58,7 @@ class ThisWeek extends React.Component {
               suffix="Tracks so far"/>,
             <Link
               key="link"
-              href={ 'https://www.last.fm/user/' + this.props.user }>
+              href={ 'https://www.last.fm/user/luke--mitchell' }>
                 More at last.fm
             </Link>
           ])}
@@ -67,10 +66,6 @@ class ThisWeek extends React.Component {
       </div>
     )
   }
-}
-
-ThisWeek.propTypes = {
-  user: PropTypes.string
 }
 
 export default ThisWeek

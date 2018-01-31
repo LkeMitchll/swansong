@@ -1,7 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import axios from 'axios'
-import urlConstructor from '../shared/url_constructor.js'
 import * as Epoch from '../shared/sunday_epoch'
 import Loading from './loading.js'
 import Subheading from './subheading.js'
@@ -23,16 +21,16 @@ class LastWeek extends React.Component {
     var from = Epoch.getStartOfLastWeek(new Date)
     var to = Epoch.getEndOfLastWeek(new Date)
 
-    const getAlbums = axios.get(urlConstructor('user.getweeklyalbumchart', this.props.user, ''))
-    const getTracks = axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${from}&to=${to}`))
-    const getArtists = axios.get(urlConstructor('user.getweeklyartistchart', this.props.user, ''))
+    const getAlbums = axios.get(`${process.env.API_URL}/weekly_album_chart/total`)
+    const getTracks = axios.get(`${process.env.API_URL}/recent_tracks/total/${from}.${to}`)
+    const getArtists = axios.get(`${process.env.API_URL}/weekly_artist_chart/total`)
 
     axios.all([getAlbums, getTracks, getArtists])
       .then(axios.spread((albums, tracks, artists) => {
         this.setState({
-          albums: albums.data.weeklyalbumchart.album.length.toString(),
-          tracks: tracks.data.recenttracks['@attr'].total.toString(),
-          artists: artists.data.weeklyartistchart.artist.length.toString(),
+          albums: albums.data,
+          tracks: tracks.data,
+          artists: artists.data,
           loading: false
         })
       }))
@@ -56,10 +54,6 @@ class LastWeek extends React.Component {
       </div>
     )
   }
-}
-
-LastWeek.propTypes = {
-  user: PropTypes.string
 }
 
 export default LastWeek

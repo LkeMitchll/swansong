@@ -39,7 +39,7 @@ class WeeklyCount extends React.Component {
 }
 
 WeeklyCount.propTypes = {
-  total: PropTypes.string,
+  total: PropTypes.number,
   suffix: PropTypes.string
 }
 
