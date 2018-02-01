@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import * as Epoch from '../shared/sunday_epoch'
+import * as Epoch from '../shared/epoch.js'
 import Loading from './loading.js'
 import Subheading from './subheading.js'
 import WeekWrapper from './week_wrapper.js'
