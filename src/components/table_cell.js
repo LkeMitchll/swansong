@@ -37,7 +37,10 @@ class TableCell extends React.Component {
 }
 
 TableCell.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   faded: PropTypes.bool,
   header: PropTypes.bool,
   width: PropTypes.string

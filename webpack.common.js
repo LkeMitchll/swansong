@@ -7,6 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -33,12 +34,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
       title: 'Swansong'
-    }),
-    new UglifyJSPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
     })
   ]
 };

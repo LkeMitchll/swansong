@@ -26,7 +26,10 @@ class WeekWrapper extends React.Component {
 }
 
 WeekWrapper.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ])
 }
 
 export default WeekWrapper

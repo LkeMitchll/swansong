@@ -25,7 +25,10 @@ class Wrapper extends React.Component {
 }
 
 Wrapper.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]),
   wide: PropTypes.bool,
   nested: PropTypes.bool
 }

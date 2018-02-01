@@ -28,7 +28,7 @@ class Subheading extends React.Component {
 }
 
 Subheading.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.string
 }
 
 export default Subheading
