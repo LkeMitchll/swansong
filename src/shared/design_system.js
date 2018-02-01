@@ -31,17 +31,18 @@ export const myDesignSystem = {
   },
 
   breakpoints: {
-    s: '50rem'
+    s: '30rem'
   },
 
   spacing: {
+    xs: '0.4rem',
     s: '0.8rem',
     base: '1rem',
     l: '2rem',
     alt: '1.2rem'
   },
 
-  measure: '50rem',
+  measure: '30rem',
 }
 
 export const ds = new DesignSystem(myDesignSystem, {

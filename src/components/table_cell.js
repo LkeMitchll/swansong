@@ -13,8 +13,17 @@ const Header = styled.th`
   padding-left: 0;
   width: ${props => props.width || 'auto'};
 
-  @media (max-width: small-viewport) {
-    display: none;
+  @media (max-width: ${ds.bp('s')}) {
+    ${props => props.header ? 'display: none;' : 'display: block;'}
+    padding: 0;
+    margin-right: ${ds.get('spacing.s')};
+    border-bottom: 0;
+    font-size: ${ds.fs('xs')};
+
+    &:last-of-type {
+      border-bottom: 1px solid ${ds.brand('primary')};
+      padding-bottom: ${ds.get('spacing.s')};
+    }
   }
 `
 
@@ -26,11 +35,20 @@ class TableCell extends React.Component {
 
     if (isHeader) {
       return (
-        <Header faded={this.props.faded} width={this.props.width}>{this.props.children}</Header>
+        <Header
+          faded={this.props.faded}
+          width={this.props.width}
+          header={this.props.header}>
+          {this.props.children}
+        </Header>
       )
     } else {
       return (
-        <Cell faded={this.props.faded} width={this.props.width}>{this.props.children}</Cell>
+        <Cell
+          faded={this.props.faded}
+          width={this.props.width}>
+          {this.props.children}
+        </Cell>
       )
     }
   }

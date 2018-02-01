@@ -11,11 +11,16 @@ import WeeklyCount from './weekly_count.js'
 const Link = styled.a`
   font-family: ${ds.get('type.fonts.base')};
   font-weight: ${ds.get('type.fontWeight.base')};
+  font-size: ${ds.fs('base')};
   color: ${ds.brand('primary')};
   text-decoration: underline;
 
   &:hover {
     text-decoration: none;
+  }
+
+  @media (max-width: ${ds.bp('s')}) {
+    font-size: ${ds.fs('s')};
   }
 `
 

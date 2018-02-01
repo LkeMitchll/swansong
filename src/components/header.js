@@ -11,7 +11,7 @@ const Logo = styled('h1')`
 
   @media (max-width: ${ds.bp('s')}) {
     font-size: ${ds.fs('s')};
-    margin-bottom: ${ds.get('spacing.base')};
+    margin-bottom: ${ds.get('spacing.l')};
   }
 `
 

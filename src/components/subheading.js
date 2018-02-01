@@ -14,6 +14,7 @@ const Heading = styled.h2`
 
   @media (max-width: ${ds.bp('s')}) {
     font-size: ${ds.fs('s')};
+    margin-bottom: ${ds.get('spacing.s')};
   }
 `
 

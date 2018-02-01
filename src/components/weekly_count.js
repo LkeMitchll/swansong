@@ -17,6 +17,7 @@ const Data = styled.strong`
 
   @media (max-width: ${ds.bp('s')}) {
     font-size: ${ds.fs('base')};
+    margin-right: ${ds.get('spacing.xs')};
   }
 `
 
@@ -25,6 +26,10 @@ const Phrase = styled.span`
   font-size: ${ds.fs('base')};
   font-weight: ${ds.get('type.fontWeight.base')};
   margin-right: ${ds.get('spacing.s')};
+
+  @media (max-width: ${ds.bp('s')}) {
+    font-size: ${ds.fs('s')};
+  }
 `
 
 class WeeklyCount extends React.Component {
