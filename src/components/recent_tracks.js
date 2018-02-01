@@ -4,6 +4,7 @@ import { ds } from '../shared/design_system'
 import axios from 'axios'
 import Wrapper from './wrapper.js'
 import Subheading from './subheading.js'
+import Loading from './loading.js'
 import TableCell from './table_cell.js'
 import Track from './track.js'
 
@@ -20,7 +21,8 @@ class RecentTracks extends React.Component {
 
     this.state = {
       nowplaying: [],
-      songs: []
+      songs: [],
+      loading: true
     }
   }
 
@@ -34,12 +36,15 @@ class RecentTracks extends React.Component {
         } else {
           this.setState({ songs })
         }
+        this.setState({ loading: false })
 
       })
       .catch(err => { window.alert(`Recent Tracks: ${err}`) })
   }
 
   render() {
+    const isLoading = this.state.loading
+
     return (
       <div>
         <Wrapper nested>
@@ -55,24 +60,33 @@ class RecentTracks extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.nowplaying.map((song, key) =>
-              <Track
-                nowplaying="true"
-                key={key}
-                artist={song.artist.name}
-                name={song.name}
-                songURL={song.url}
-                artistURL={song.artist.url} />
-            )}
-            {this.state.songs.map((song, key) =>
-              <Track
-                key={key}
-                artist={song.artist.name}
-                name={song.name}
-                songURL={song.url}
-                artistURL={song.artist.url}
-                date={song.date.uts} />
-            )}
+            {isLoading ? (
+              <tr>
+                <td></td>
+                <td colSpan="2" height="100px">
+                  <Loading>Loading...</Loading>
+                </td>
+              </tr>
+            ) : ([
+              this.state.nowplaying.map((song, key) =>
+                <Track
+                  nowplaying="true"
+                  key={key}
+                  artist={song.artist.name}
+                  name={song.name}
+                  songURL={song.url}
+                  artistURL={song.artist.url} />
+              ),
+              this.state.songs.map((song, key) =>
+                <Track
+                  key={key}
+                  artist={song.artist.name}
+                  name={song.name}
+                  songURL={song.url}
+                  artistURL={song.artist.url}
+                  date={song.date.uts} />
+              )
+            ])}
           </tbody>
         </Table>
       </div>

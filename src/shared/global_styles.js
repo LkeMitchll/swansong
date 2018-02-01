@@ -56,6 +56,10 @@ const globalStyles = injectGlobal`
     font-size: ${ds.get('type.baseFontSize')};
     line-height: 1.6;
   }
+
+  td {
+    padding: 0;
+  }
 `
 
 export default globalStyles
