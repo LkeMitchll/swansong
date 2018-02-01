@@ -1,12 +1,14 @@
-# SwanSong
+# Swansong
 
 A minimal last.fm client to display basic stats in a clean way. Built using react.
 
 ## Setup
 
-1. Clone repo
-2. Run `yarn` to install dependencies to `./node_modules`
-3. Run `yarn run update` to clone font submodule (private)
+1. Clone this repo.
+2. Clone [`swansong_server`][server] and follow the setup for it carefully.
+3. In this repo create `.env` with `API_URL='http://localhost:3333'`.
+4. Run `yarn` to install dependencies to `./node_modules`.
+3. Run `yarn run update` to clone font submodule (private due to copyright).
 
 ## Development
 
@@ -25,5 +27,6 @@ The site is deployed with [dokku][dokku] using a `Dockerfile`, to test the deplo
 4. Open `http://localhost:1337` in a browser.
 5. Stop the container with `docker stop [id]`
 
+[server]: https://github.com/lkemitchll/swansong_server
 [dokku]: https://github.com/dokku/dokku
 [docker]: https://www.docker.com
