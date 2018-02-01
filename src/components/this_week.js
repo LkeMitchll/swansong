@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import * as Epoch from '../shared/sunday_epoch.js'
 import urlConstructor from '../shared/url_constructor.js'
+import Loading from './loading.js'
 import Subheading from './subheading.js'
 import WeekWrapper from './week_wrapper.js'
 import WeeklyCount from './weekly_count.js'
@@ -13,7 +14,6 @@ const Link = styled.a`
   font-family: ${ds.get('type.fonts.base')};
   font-weight: ${ds.get('type.fontWeight.base')};
   color: ${ds.brand('primary')};
-  margin-left: ${ds.get('spacing.base')};
   text-decoration: underline;
 
   &:hover {
@@ -25,7 +25,8 @@ class ThisWeek extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tracks: 'xxx'
+      tracks: '0',
+      loading: true
     }
   }
 
@@ -34,19 +35,34 @@ class ThisWeek extends React.Component {
 
     axios.get(urlConstructor('user.getrecenttracks', this.props.user, `&from=${epoch}`))
       .then(res => {
-        this.setState({ tracks: res.data.recenttracks['@attr'].total })
+        this.setState({
+          tracks: res.data.recenttracks['@attr'].total,
+          loading: false
+        })
       })
       .catch(err => { window.alert(`This Week: ${err}`) })
   }
 
   render() {
+    const isLoading = this.state.loading
+
     return (
       <div>
         <Subheading>This Week</Subheading>
         <WeekWrapper>
-          <WeeklyCount total={this.state.tracks} suffix="Tracks so far"/>
-          &ndash;
-          <Link href={ 'https://www.last.fm/user/' + this.props.user }>More at last.fm</Link>
+          {isLoading ? (
+            <Loading>Loading...</Loading>
+          ) : ([
+            <WeeklyCount
+              key="tracks"
+              total={this.state.tracks}
+              suffix="Tracks so far"/>,
+            <Link
+              key="link"
+              href={ 'https://www.last.fm/user/' + this.props.user }>
+                More at last.fm
+            </Link>
+          ])}
         </WeekWrapper>
       </div>
     )

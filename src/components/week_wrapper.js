@@ -8,6 +8,7 @@ const Wrapper = styled.p`
   flex-wrap: wrap;
   align-items: center;
   margin: 0 0 ${ds.get('spacing.l')};
+  height: 70px;
 
   @media (max-width: ${ds.bp('s')}) {
     margin-bottom: ${ds.get('spacing.base')};
