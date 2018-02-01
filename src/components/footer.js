@@ -21,14 +21,8 @@ class Footer extends React.Component {
   render () {
     return (
       <Wrapper>
-        <p>An <Link>interroban.gg</Link> project</p>
-        <p>
-          Set in <Link>Tiempos Text</Link> &amp; <Link>Courier Prime</Link>.
-          <br/>
-          Data from <Link>last.fm</Link>.
-          <br/>
-          Source code hosted at <Link>GitHub</Link>.
-        </p>
+        <p>An <Link href="http://interroban.gg">interroban.gg</Link> project.</p>
+        <p><Link href="https://github.com/LkeMitchll/swansong">Source Code</Link>.</p>
       </Wrapper>
     )
   }
