@@ -55,7 +55,7 @@ class RecentTracks extends React.Component {
           <thead>
             <tr>
               <TableCell faded header width="20%">Date (Time)</TableCell>
-              <TableCell faded header>Artist</TableCell>
+              <TableCell faded header width="25%">Artist</TableCell>
               <TableCell faded header>Track</TableCell>
             </tr>
           </thead>

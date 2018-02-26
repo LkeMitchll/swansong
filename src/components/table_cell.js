@@ -13,6 +13,10 @@ const Header = styled.th`
   padding-left: 0;
   width: ${props => props.width || 'auto'};
 
+  &:last-of-type {
+    padding-left: ${ds.get('spacing.s')};
+  }
+
   @media (max-width: ${ds.bp('s')}) {
     ${props => props.header ? 'display: none;' : 'display: block;'}
     padding: 0;
@@ -23,6 +27,7 @@ const Header = styled.th`
     &:last-of-type {
       border-bottom: 1px solid ${ds.brand('primary')};
       padding-bottom: ${ds.get('spacing.s')};
+      padding-left: 0;
     }
   }
 `
