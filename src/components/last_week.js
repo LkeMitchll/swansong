@@ -21,9 +21,9 @@ class LastWeek extends React.Component {
     var from = Epoch.getStartOfLastWeek(new Date)
     var to = Epoch.getEndOfLastWeek(new Date)
 
-    const getAlbums = axios.get(`${process.env.API_URL}/weekly_album_chart/total`)
+    const getAlbums = axios.get(`${process.env.API_URL}/weekly_album_chart/total/${from}.${to}`)
     const getTracks = axios.get(`${process.env.API_URL}/recent_tracks/total/${from}.${to}`)
-    const getArtists = axios.get(`${process.env.API_URL}/weekly_artist_chart/total`)
+    const getArtists = axios.get(`${process.env.API_URL}/weekly_artist_chart/total/${from}.${to}`)
 
     axios.all([getAlbums, getTracks, getArtists])
       .then(axios.spread((albums, tracks, artists) => {
