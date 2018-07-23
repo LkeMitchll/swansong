@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import { ds } from '../shared/design_system'
 
-const Logo = styled('h1')`
+const Logo = styled.h1`
   color: ${ds.brand('primary')};
   font-family: ${ds.get('type.fonts.bold')};
   font-size: ${ds.fs('base')};
