@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import formatDate from '../shared/format_date.js'
 
 const Wrapper = styled.li`
+  font-size: ${ds.type.sizes.base};
   margin-bottom: ${ds.spacing.base};
 `
 

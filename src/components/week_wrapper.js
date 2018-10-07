@@ -4,12 +4,8 @@ import ds from '../shared/design_system'
 import styled from 'react-emotion'
 
 const Wrapper = styled.div`
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
   display: grid;
-
-  @media (min-width: ${ds.breakpoints.s}) {
-    grid-template-columns: repeat(3, minmax(500px, 1fr));
-  }
 `
 
 class WeekWrapper extends React.Component {

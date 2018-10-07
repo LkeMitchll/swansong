@@ -16,6 +16,7 @@ const Container = styled.div`
 `
 
 const Tabs = styled.header`
+  font-size: ${ds.type.sizes.base};
   margin-bottom: ${ds.spacing.base};
   position: relative;
   z-index: 1000;

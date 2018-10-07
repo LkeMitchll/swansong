@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 import ds from '../shared/design_system'
 
 const Wrapper = styled.footer`
+  font-size: ${ds.type.sizes.base};
   color: ${ds.colors.faded};
 `
 
