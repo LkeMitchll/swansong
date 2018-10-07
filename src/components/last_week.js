@@ -18,22 +18,29 @@ class LastWeek extends React.Component {
   }
 
   componentDidMount() {
-    var from = Epoch.getStartOfLastWeek(new Date)
-    var to = Epoch.getEndOfLastWeek(new Date)
+    var from = Epoch.getStartOfLastWeek(new Date())
+    var to = Epoch.getEndOfLastWeek(new Date())
 
-    const getAlbums = axios.get(`${process.env.API_URL}/weekly_album_chart/total/${from}.${to}`)
-    const getTracks = axios.get(`${process.env.API_URL}/recent_tracks/total/${from}.${to}`)
-    const getArtists = axios.get(`${process.env.API_URL}/weekly_artist_chart/total/${from}.${to}`)
+    const getAlbums = axios.get(
+      `${process.env.API_URL}/weekly_album_chart/total/${from}.${to}`
+    )
+    const getTracks = axios.get(
+      `${process.env.API_URL}/recent_tracks/total/${from}.${to}`
+    )
+    const getArtists = axios.get(
+      `${process.env.API_URL}/weekly_artist_chart/total/${from}.${to}`
+    )
 
-    axios.all([getAlbums, getTracks, getArtists])
-      .then(axios.spread((albums, tracks, artists) => {
+    axios.all([getAlbums, getTracks, getArtists]).then(
+      axios.spread((albums, tracks, artists) => {
         this.setState({
           albums: albums.data,
           tracks: tracks.data,
           artists: artists.data,
           loading: false
         })
-      }))
+      })
+    )
   }
 
   render() {
@@ -45,11 +52,25 @@ class LastWeek extends React.Component {
         <WeekWrapper>
           {isLoading ? (
             <Loading>Loading...</Loading>
-          ) : ([
-            <WeeklyCount key="tracks" total={this.state.tracks} suffix="Tracks from"/>,
-            <WeeklyCount key="albums" total={this.state.albums} suffix="Albums and"/>,
-            <WeeklyCount key="artists" total={this.state.artists} suffix="Artists."/>
-          ])}
+          ) : (
+            [
+              <WeeklyCount
+                key="tracks"
+                total={this.state.tracks}
+                suffix="Tracks"
+              />,
+              <WeeklyCount
+                key="albums"
+                total={this.state.albums}
+                suffix="Albums"
+              />,
+              <WeeklyCount
+                key="artists"
+                total={this.state.artists}
+                suffix="Artists"
+              />
+            ]
+          )}
         </WeekWrapper>
       </div>
     )

@@ -1,5 +1,5 @@
 import { injectGlobal } from 'react-emotion'
-import { ds } from './design_system'
+import ds from './design_system'
 
 import LunchRegWoff2 from '../assets/fonts/lunchtype24-regular-expanded-webfont.woff2'
 import LunchRegWoff from '../assets/fonts/lunchtype24-regular-expanded-webfont.woff'
@@ -47,13 +47,10 @@ const globalStyles = injectGlobal`
 
   html {
     -webkit-font-smoothing: antialiased;
-    color: ${ds.brand("primary")};
-    font-size: ${ds.get("type.baseFontSize")};
-    line-height: 1.6;
-  }
-
-  td {
-    padding: 0;
+    color: ${ds.colors.light};
+    background-color: ${ds.colors.dark};
+    font-size: ${ds.type.baseFontSize};
+    font-family: ${ds.type.fonts.base};
   }
 `
 

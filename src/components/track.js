@@ -1,17 +1,25 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ds } from '../shared/design_system.js'
-import TableCell from './table_cell.js'
+import ds from '../shared/design_system.js'
 import PropTypes from 'prop-types'
 import formatDate from '../shared/format_date.js'
 
-const Link = styled.a`
-  color: ${ds.brand('primary')};
-  text-decoration: underline;
+const Wrapper = styled.li`
+  margin-bottom: ${ds.spacing.base};
+`
+
+const Song = styled.a`
+  display: block;
+  text-decoration: none;
+  color: ${ds.colors.light};
 
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
   }
+`
+
+const Artist = styled(Song)`
+  font-weight: 500;
 `
 
 class Track extends React.Component {
@@ -33,17 +41,10 @@ class Track extends React.Component {
 
   render() {
     return (
-      <tr key={this.props.id}>
-        <TableCell faded>
-          <p>{this.state.meta}</p>
-        </TableCell>
-        <TableCell>
-          <Link href={this.props.artistURL}>{this.props.artist}</Link>
-        </TableCell>
-        <TableCell>
-          <Link href={this.props.songURL}>{this.props.name}</Link>
-        </TableCell>
-      </tr>
+      <Wrapper>
+        <Song href={this.props.songURL}>{this.props.name}</Song>
+        <Artist href={this.props.artistURL}>{this.props.artist}</Artist>
+      </Wrapper>
     )
   }
 }

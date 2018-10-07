@@ -1,42 +1,51 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ds } from '../shared/design_system'
+import ds from '../shared/design_system'
 import PropTypes from 'prop-types'
 
 const Wrapper = styled.span`
   display: flex;
-  align-items: center;
+  flex-direction: column;
 `
 
 const Data = styled.strong`
-  font-family: ${ds.get('type.fonts.bold')};
-  font-weight: ${ds.get('type.fontWeight.bold')};
-  font-size: ${ds.fs('display')};
-  font-feature-settings: "onum" 1;
-  margin-right: ${ds.get('spacing.s')};
-
-  @media (max-width: ${ds.bp('s')}) {
-    font-size: ${ds.fs('base')};
-    margin-right: ${ds.get('spacing.xs')};
-  }
+  font-family: ${ds.type.fonts.alt};
+  font-size: ${ds.type.sizes.alt};
+  line-height: 0.42;
 `
 
-const Phrase = styled.span`
-  font-family: ${ds.get('type.fonts.base')};
-  font-size: ${ds.fs('base')};
-  font-weight: ${ds.get('type.fontWeight.base')};
-  margin-right: ${ds.get('spacing.s')};
-
-  @media (max-width: ${ds.bp('s')}) {
-    font-size: ${ds.fs('s')};
-  }
+const Outlined = styled.span`
+  -webkit-text-stroke: 2px ${ds.colors.light};
+  color: ${ds.colors.dark};
 `
+
+const Phrase = styled.span``
 
 class WeeklyCount extends React.Component {
+  initCount(total) {
+    if (total < 10) {
+      return (
+        <Data>
+          <Outlined>00</Outlined>
+          {total}
+        </Data>
+      )
+    } else if (total < 100) {
+      return (
+        <Data>
+          <Outlined>0</Outlined>
+          {total}
+        </Data>
+      )
+    } else {
+      return <Data>{total}</Data>
+    }
+
+  }
   render() {
     return (
       <Wrapper>
-        <Data>{this.props.total}</Data>
+        {this.initCount(this.props.total)}
         <Phrase>{this.props.suffix}</Phrase>
       </Wrapper>
     )

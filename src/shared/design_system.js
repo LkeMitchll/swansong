@@ -1,39 +1,29 @@
-import DesignSystem from 'design-system-utils'
-
-export const myDesignSystem = {
+const ds = {
   type: {
-    baseFontSize: '22px',
+    baseFontSize: '48px',
     sizes: {
-      base: 22,
-      s: 16,
-      xs: 14,
-      alt: 19,
-      display: 44,
+      base: '1rem',
+      alt: '40rem',
     },
-
     fonts: {
       base: '"Lunchtype 24", Times New Roman',
-      bold: '"Tiempos Text Semibold", Times New Roman',
       alt: '"Druk XX Condensed", Courier, Monaco, monospace',
     },
-
     fontWeight: {
       base: 400,
       bold: 600
     },
   },
-
   colors: {
-    brand: {
-      primary: 'rgb(74, 74, 74)',
-      secondary: 'rgb(255, 255, 255)'
-    }
+    dark: 'black',
+    light: 'white',
+    faded: '#808080',
+    positive: 'green',
+    negative: 'red',
   },
-
   breakpoints: {
     s: '30rem'
   },
-
   spacing: {
     xs: '0.4rem',
     s: '0.8rem',
@@ -41,11 +31,7 @@ export const myDesignSystem = {
     l: '2rem',
     alt: '1.2rem'
   },
-
   measure: '30rem',
 }
 
-export const ds = new DesignSystem(myDesignSystem, {
-  fontSizeUnit: 'rem',
-  useModularScale: false
-})
+export default ds
