@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 import ds from '../shared/design_system.js'
 
 export const Section = styled.section`
+  margin-bottom: ${ds.spacing.l};
 `
 
 class Wrapper extends React.Component {

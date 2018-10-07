@@ -1,8 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import * as Epoch from '../shared/epoch.js'
-import Loading from './loading.js'
-import Subheading from './subheading.js'
 import WeekWrapper from './week_wrapper.js'
 import WeeklyCount from './weekly_count.js'
 
@@ -44,35 +42,48 @@ class LastWeek extends React.Component {
   }
 
   render() {
-    const isLoading = this.state.loading
+    const { isLoading } = this.state
 
     return (
-      <div>
-        <Subheading>Last Week</Subheading>
-        <WeekWrapper>
-          {isLoading ? (
-            <Loading>Loading...</Loading>
-          ) : (
-            [
-              <WeeklyCount
-                key="tracks"
-                total={this.state.tracks}
-                suffix="Tracks"
-              />,
-              <WeeklyCount
-                key="albums"
-                total={this.state.albums}
-                suffix="Albums"
-              />,
-              <WeeklyCount
-                key="artists"
-                total={this.state.artists}
-                suffix="Artists"
-              />
-            ]
-          )}
-        </WeekWrapper>
-      </div>
+      <WeekWrapper>
+        {isLoading ? (
+          [
+            <WeeklyCount
+              key="tracks"
+              total={0}
+              suffix="Tracks"
+            />,
+            <WeeklyCount
+              key="albums"
+              total={0}
+              suffix="Albums"
+            />,
+            <WeeklyCount
+              key="artists"
+              total={0}
+              suffix="Artists"
+            />
+          ]
+        ) : (
+          [
+            <WeeklyCount
+              key="tracks"
+              total={this.state.tracks}
+              suffix="Tracks"
+            />,
+            <WeeklyCount
+              key="albums"
+              total={this.state.albums}
+              suffix="Albums"
+            />,
+            <WeeklyCount
+              key="artists"
+              total={this.state.artists}
+              suffix="Artists"
+            />
+          ]
+        )}
+      </WeekWrapper>
     )
   }
 }

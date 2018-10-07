@@ -7,6 +7,7 @@ const Heading = styled.h2`
   font-weight: 400;
   font-size: ${ds.type.sizes.base};
   color: ${ds.colors.faded};
+  margin: 0 0 ${ds.spacing.base};
 `
 
 class Subheading extends React.Component {

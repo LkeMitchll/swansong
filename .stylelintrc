@@ -35,7 +35,7 @@
       "ms", "s",
       "Hz", "kHz",
       "dpi", "dpcm", "dppx",
-      "%"
+      "%", "fr"
     ],
     "selector-pseudo-element-colon-notation": "double",
     "selector-no-qualifying-type": true,

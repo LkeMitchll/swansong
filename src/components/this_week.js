@@ -1,14 +1,8 @@
 import React from 'react'
-import styled from 'react-emotion'
-import ds from '../shared/design_system'
 import axios from 'axios'
 import * as Epoch from '../shared/epoch.js'
-import Loading from './loading.js'
-import Subheading from './subheading.js'
 import WeekWrapper from './week_wrapper.js'
 import WeeklyCount from './weekly_count.js'
-
-const Link = styled.a``
 
 class ThisWeek extends React.Component {
   constructor(props) {
@@ -40,25 +34,13 @@ class ThisWeek extends React.Component {
     const isLoading = this.state.loading
 
     return (
-      <div>
-        <Subheading>This Week</Subheading>
-        <WeekWrapper>
-          {isLoading ? (
-            <Loading>Loading...</Loading>
-          ) : (
-            [
-              <WeeklyCount
-                key="tracks"
-                total={this.state.tracks}
-                suffix="Tracks"
-              />,
-              <Link key="link" href={'https://www.last.fm/user/luke--mitchell'}>
-                More at last.fm
-              </Link>
-            ]
-          )}
-        </WeekWrapper>
-      </div>
+      <WeekWrapper>
+        {isLoading ? (
+          <WeeklyCount key="tracks" total="0" suffix="Tracks" />
+        ) : (
+          <WeeklyCount key="tracks" total={this.state.tracks} suffix="Tracks" />
+        )}
+      </WeekWrapper>
     )
   }
 }

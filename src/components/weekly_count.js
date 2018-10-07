@@ -3,12 +3,13 @@ import styled from 'react-emotion'
 import ds from '../shared/design_system'
 import PropTypes from 'prop-types'
 
-const Wrapper = styled.span`
+const Wrapper = styled.h2`
   display: flex;
   flex-direction: column;
+  margin: 0;
 `
 
-const Data = styled.strong`
+const Data = styled.span`
   font-family: ${ds.type.fonts.alt};
   font-size: ${ds.type.sizes.alt};
   line-height: 0.42;
@@ -19,7 +20,10 @@ const Outlined = styled.span`
   color: ${ds.colors.dark};
 `
 
-const Phrase = styled.span``
+const Phrase = styled.span`
+  font-size: ${ds.type.sizes.base};
+  font-weight: 400;
+`
 
 class WeeklyCount extends React.Component {
   initCount(total) {

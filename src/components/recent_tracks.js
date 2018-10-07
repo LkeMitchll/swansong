@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import ds from '../shared/design_system'
 import axios from 'axios'
-import Wrapper from './wrapper.js'
 import Subheading from './subheading.js'
 import Loading from './loading.js'
 import Track from './track.js'
@@ -50,9 +48,9 @@ class RecentTracks extends React.Component {
 
     return (
       <div>
-        <Wrapper nested>
+        <header>
           <Subheading>Recent Tracks</Subheading>
-        </Wrapper>
+        </header>
 
         <List>
           {isLoading ? (
