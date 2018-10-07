@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: grid;
 
   @media (min-width: ${ds.breakpoints.s}) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(500px, 1fr));
   }
 `
 

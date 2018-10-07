@@ -11,8 +11,12 @@ const Wrapper = styled.h2`
 
 const Data = styled.span`
   font-family: ${ds.type.fonts.alt};
-  font-size: ${ds.type.sizes.alt};
-  line-height: 0.42;
+  font-size: 100vw;
+  line-height: 0.8;
+
+  @media (min-width: ${ds.breakpoints.s}) {
+    font-size: ${ds.type.sizes.alt};
+  }
 `
 
 const Outlined = styled.span`
