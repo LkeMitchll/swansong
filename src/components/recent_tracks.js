@@ -49,7 +49,7 @@ class RecentTracks extends React.Component {
     return (
       <div>
         <header>
-          <Subheading>Recent Tracks</Subheading>
+          <Subheading>Recent Tracks (10)</Subheading>
         </header>
 
         <List>
