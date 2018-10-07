@@ -21,7 +21,6 @@ class App extends React.Component {
     return (
       <Container>
         <Wrapper>
-          <Header />
           <LastWeek />
           <ThisWeek />
         </Wrapper>

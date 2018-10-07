@@ -1,37 +1,43 @@
 import { injectGlobal } from 'react-emotion'
 import { ds } from './design_system'
 
+import LunchRegWoff2 from '../assets/fonts/lunchtype24-regular-expanded-webfont.woff2'
+import LunchRegWoff from '../assets/fonts/lunchtype24-regular-expanded-webfont.woff'
+import LunchRegTTF from '../assets/fonts/lunchtype24-regular-expanded-webfont.ttf'
+import LunchMedWoff2 from '../assets/fonts/lunchtype24-medium-expanded-webfont.woff2'
+import LunchMedWoff from '../assets/fonts/lunchtype24-medium-expanded-webfont.woff'
+import LunchMedTTF from '../assets/fonts/lunchtype24-medium-expanded-webfont.ttf'
+import DrukWoff2 from '../assets/fonts/DrukXXCond-Super-Web.woff2'
+import DrukWoff from '../assets/fonts/DrukXXCond-Super-Web.woff'
+
 const globalStyles = injectGlobal`
   @font-face {
-    font-family: "Tiempos Text Regular";
+    font-family: "Lunchtype 24";
+    src:
+      url("${LunchRegWoff2}") format("woff2"),
+      url("${LunchRegWoff}") format("woff"),
+      url("${LunchRegTTF}") format("truetype");
     font-weight: 400;
-    src: url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Regular.eot");
-    src:
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Regular.eot?#iefix") format("embedded-opentype"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Regular.woff2") format("woff2"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Regular.woff") format("woff");
-  }
-
-  @font-face {
-    font-family: "Tiempos Text Semibold";
-    font-weight: 600;
-    src: url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Semibold.eot");
-    src:
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Semibold.eot?#iefix") format("embedded-opentype"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Semibold.woff2") format("woff2"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/TiemposTextWeb-Semibold.woff") format("woff");
-  }
-
-  @font-face {
-    font-family: "Courier Prime Medium";
     font-style: normal;
-    font-weight: normal;
-    src: url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/CourierPrime-Medium.eot");
+  }
+
+  @font-face {
+    font-family: "Lunchtype 24";
     src:
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/CourierPrime-Medium.eot?#iefix") format("embedded-opentype"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/CourierPrime-Medium.woff") format("woff"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/CourierPrime-Medium.ttf") format("truetype"),
-      url("https://s3.eu-west-2.amazonaws.com/interrobang-fonts/CourierPrime-Medium.svg") format("svg");
+      url("${LunchMedWoff2}") format("woff2"),
+      url("${LunchMedWoff}") format("woff"),
+      url("${LunchMedTTF}") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Druk XX Condensed";
+    src:
+      url("${DrukWoff2}") format("woff2"),
+      url("${DrukWoff}") format("woff");
+    font-weight: 800;
+    font-style: normal;
   }
 
   body {
@@ -41,8 +47,8 @@ const globalStyles = injectGlobal`
 
   html {
     -webkit-font-smoothing: antialiased;
-    color: ${ds.brand('primary')};
-    font-size: ${ds.get('type.baseFontSize')};
+    color: ${ds.brand("primary")};
+    font-size: ${ds.get("type.baseFontSize")};
     line-height: 1.6;
   }
 

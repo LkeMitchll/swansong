@@ -12,9 +12,9 @@ export const myDesignSystem = {
     },
 
     fonts: {
-      base: '"Tiempos Text Regular", Times New Roman',
+      base: '"Lunchtype 24", Times New Roman',
       bold: '"Tiempos Text Semibold", Times New Roman',
-      alt: '"Courier Prime Medium", Courier, Monaco, monospace',
+      alt: '"Druk XX Condensed", Courier, Monaco, monospace',
     },
 
     fontWeight: {
