@@ -1,14 +1,15 @@
 import { injectGlobal } from 'react-emotion'
 import ds from './design_system'
 
-import LunchRegWoff2 from '../assets/fonts/lunchtype24-regular-expanded-webfont.woff2'
-import LunchRegWoff from '../assets/fonts/lunchtype24-regular-expanded-webfont.woff'
-import LunchRegTTF from '../assets/fonts/lunchtype24-regular-expanded-webfont.ttf'
-import LunchMedWoff2 from '../assets/fonts/lunchtype24-medium-expanded-webfont.woff2'
-import LunchMedWoff from '../assets/fonts/lunchtype24-medium-expanded-webfont.woff'
-import LunchMedTTF from '../assets/fonts/lunchtype24-medium-expanded-webfont.ttf'
-import DrukWoff2 from '../assets/fonts/DrukXXCond-Super-Web.woff2'
-import DrukWoff from '../assets/fonts/DrukXXCond-Super-Web.woff'
+const aws_prefix = 'https://s3.eu-west-2.amazonaws.com/interrobang-fonts/'
+const LunchRegWoff2 = `${aws_prefix + 'lunchtype24-regular-expanded-webfont.woff2'}`
+const LunchRegWoff = `${aws_prefix + 'lunchtype24-regular-expanded-webfont.woff'}`
+const LunchRegTTF = `${aws_prefix + 'lunchtype24-regular-expanded-webfont.ttf'}`
+const LunchMedWoff2 =  `${aws_prefix + 'lunchtype24-medium-expanded-webfont.woff2'}`
+const LunchMedWoff =  `${aws_prefix + 'lunchtype24-medium-expanded-webfont.woff'}`
+const LunchMedTTF =  `${aws_prefix + 'lunchtype24-medium-expanded-webfont.ttf'}`
+const DrukWoff2 =  `${aws_prefix + 'DrukXXCond-Super-Web.woff2'}`
+const DrukWoff =  `${aws_prefix + 'DrukXXCond-Super-Web.woff'}`
 
 const globalStyles = injectGlobal`
   @font-face {

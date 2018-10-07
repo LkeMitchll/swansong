@@ -2,7 +2,7 @@ const ds = {
   type: {
     baseFontSize: '48px',
     sizes: {
-      base: '5vw',
+      base: '4vw',
       alt: '60vw',
     },
     fonts: {
