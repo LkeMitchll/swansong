@@ -20,10 +20,6 @@ module.exports = {
         loader: 'babel-loader',
         test: /\.js$/
       },
-      {
-        loader: 'file-loader?name=fonts/[name].[ext]',
-        test: /\.(woff|woff2|eot|ttf|svg)$/
-      }
     ]
   },
   plugins: [

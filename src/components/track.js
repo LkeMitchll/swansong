@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'react-emotion'
 import ds from '../shared/design_system.js'
 import PropTypes from 'prop-types'
-import formatDate from '../shared/format_date.js'
 
 const Wrapper = styled.li`
   margin-bottom: ${ds.spacing.base};
@@ -23,22 +22,6 @@ const Artist = styled(Song)`
 `
 
 class Track extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      meta: '',
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.nowplaying) {
-      this.setState({ meta: 'Now Playing' })
-    } else {
-      this.setState({ meta: formatDate(this.props.date) })
-    }
-  }
-
   render() {
     return (
       <Wrapper>
