@@ -13,6 +13,10 @@ const Data = styled.span`
   font-family: ${ds.type.fonts.alt};
   line-height: 0.8;
   font-size: ${ds.type.sizes.alt};
+
+  @media (min-width: 2000px) {
+    font-size: 24rem;
+  }
 `
 
 const Outlined = styled.span`
@@ -21,7 +25,6 @@ const Outlined = styled.span`
 `
 
 const Phrase = styled.span`
-  font-size: ${ds.type.sizes.base};
   font-weight: 400;
 `
 

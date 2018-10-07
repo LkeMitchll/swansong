@@ -9,6 +9,7 @@ import Footer from './footer.js'
 
 const Container = styled.div`
   padding: ${ds.spacing.base} ${ds.spacing.l};
+  max-width: 2000px;
 
   @media (max-width: ${ds.breakpoints.s}) {
     padding: ${ds.spacing.s};
@@ -16,7 +17,6 @@ const Container = styled.div`
 `
 
 const Tabs = styled.header`
-  font-size: ${ds.type.sizes.base};
   margin-bottom: ${ds.spacing.base};
   position: relative;
   z-index: 1000;

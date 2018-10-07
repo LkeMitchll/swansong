@@ -45,6 +45,16 @@ const globalStyles = injectGlobal`
     padding: 0;
   }
 
+  body,
+  h1,
+  h2 {
+    font-size: ${ds.type.sizes.base};
+
+    @media (min-width: 2000px) {
+      font-size: 1.5rem;
+    }
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     color: ${ds.colors.light};
