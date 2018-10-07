@@ -28,7 +28,7 @@ class Track extends React.Component {
     super(props)
 
     this.state = {
-      meta: ''
+      meta: '',
     }
   }
 
@@ -57,7 +57,7 @@ Track.propTypes = {
   artist: PropTypes.string,
   name: PropTypes.string,
   date: PropTypes.string,
-  nowplaying: PropTypes.string
+  nowplaying: PropTypes.string,
 }
 
 export default Track

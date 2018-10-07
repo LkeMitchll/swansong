@@ -9,7 +9,7 @@ class ThisWeek extends React.Component {
     super(props)
     this.state = {
       tracks: '0',
-      loading: true
+      loading: true,
     }
   }
 
@@ -22,7 +22,7 @@ class ThisWeek extends React.Component {
       .then(res => {
         this.setState({
           tracks: res.data,
-          loading: false
+          loading: false,
         })
       })
       .catch(err => {

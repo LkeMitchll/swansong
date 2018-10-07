@@ -44,7 +44,6 @@ class WeeklyCount extends React.Component {
     } else {
       return <Data>{total}</Data>
     }
-
   }
   render() {
     return (
@@ -58,7 +57,7 @@ class WeeklyCount extends React.Component {
 
 WeeklyCount.propTypes = {
   total: PropTypes.number,
-  suffix: PropTypes.string
+  suffix: PropTypes.string,
 }
 
 export default WeeklyCount

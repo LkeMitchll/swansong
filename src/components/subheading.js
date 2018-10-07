@@ -12,16 +12,12 @@ const Heading = styled.h2`
 
 class Subheading extends React.Component {
   render() {
-    return(
-      <Heading>
-        {this.props.children}
-      </Heading>
-    )
+    return <Heading>{this.props.children}</Heading>
   }
 }
 
 Subheading.propTypes = {
-  children: PropTypes.string
+  children: PropTypes.string,
 }
 
 export default Subheading

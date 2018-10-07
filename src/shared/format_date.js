@@ -1,4 +1,4 @@
-var formatDate = (uts) => {
+var formatDate = uts => {
   var date = new Date(uts * 1000)
   var day = date.getDate()
   var month = date.getMonth() + 1

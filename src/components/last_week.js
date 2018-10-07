@@ -11,7 +11,7 @@ class LastWeek extends React.Component {
       albums: '0',
       tracks: '0',
       artists: '0',
-      loading: true
+      loading: true,
     }
   }
 
@@ -35,7 +35,7 @@ class LastWeek extends React.Component {
           albums: albums.data,
           tracks: tracks.data,
           artists: artists.data,
-          loading: false
+          loading: false,
         })
       })
     )
@@ -46,43 +46,29 @@ class LastWeek extends React.Component {
 
     return (
       <WeekWrapper>
-        {isLoading ? (
-          [
-            <WeeklyCount
-              key="tracks"
-              total={0}
-              suffix="Tracks"
-            />,
-            <WeeklyCount
-              key="albums"
-              total={0}
-              suffix="Albums"
-            />,
-            <WeeklyCount
-              key="artists"
-              total={0}
-              suffix="Artists"
-            />
-          ]
-        ) : (
-          [
-            <WeeklyCount
-              key="tracks"
-              total={this.state.tracks}
-              suffix="Tracks"
-            />,
-            <WeeklyCount
-              key="albums"
-              total={this.state.albums}
-              suffix="Albums"
-            />,
-            <WeeklyCount
-              key="artists"
-              total={this.state.artists}
-              suffix="Artists"
-            />
-          ]
-        )}
+        {isLoading
+          ? [
+              <WeeklyCount key="tracks" total={0} suffix="Tracks" />,
+              <WeeklyCount key="albums" total={0} suffix="Albums" />,
+              <WeeklyCount key="artists" total={0} suffix="Artists" />,
+            ]
+          : [
+              <WeeklyCount
+                key="tracks"
+                total={this.state.tracks}
+                suffix="Tracks"
+              />,
+              <WeeklyCount
+                key="albums"
+                total={this.state.albums}
+                suffix="Albums"
+              />,
+              <WeeklyCount
+                key="artists"
+                total={this.state.artists}
+                suffix="Artists"
+              />,
+            ]}
       </WeekWrapper>
     )
   }

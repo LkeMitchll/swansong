@@ -18,7 +18,7 @@ class RecentTracks extends React.Component {
     this.state = {
       nowplaying: [],
       songs: [],
-      loading: true
+      loading: true,
     }
   }
 
@@ -31,7 +31,7 @@ class RecentTracks extends React.Component {
         if (songs[0]['@attr']) {
           this.setState({
             nowplaying: [songs[0]],
-            songs: songs.slice(1, songs.length)
+            songs: songs.slice(1, songs.length),
           })
         } else {
           this.setState({ songs })
@@ -76,7 +76,7 @@ class RecentTracks extends React.Component {
                   artistURL={song.artist.url}
                   date={song.date.uts}
                 />
-              ))
+              )),
             ]
           )}
         </List>

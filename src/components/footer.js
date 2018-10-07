@@ -12,11 +12,16 @@ const Link = styled.a`
 `
 
 class Footer extends React.Component {
-  render () {
+  render() {
     return (
       <Wrapper>
-        <p>An <Link href="http://interroban.gg">interroban.gg</Link> project.</p>
-        <p><Link href="https://github.com/LkeMitchll/swansong">Source Code</Link>.</p>
+        <p>
+          An <Link href="http://interroban.gg">interroban.gg</Link> project.
+        </p>
+        <p>
+          <Link href="https://github.com/LkeMitchll/swansong">Source Code</Link>
+          .
+        </p>
       </Wrapper>
     )
   }

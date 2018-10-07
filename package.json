@@ -14,7 +14,8 @@
     "build": "NODE_ENV=production yarn run clean && webpack --config webpack.prod.js",
     "lint:js": "eslint src/**/*.js",
     "lint:css": "stylelint src/**/*.js",
-    "lint": "yarn run lint:css && yarn run lint:js"
+    "lint:format": "prettier --write 'src/**/*.js'",
+    "lint": "yarn run lint:css && yarn run lint:js && yarn run lint:format"
   },
   "dependencies": {
     "animejs": "^2.2.0",

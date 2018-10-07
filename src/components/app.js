@@ -52,7 +52,7 @@ class App extends React.Component {
   toggleSection(e, tab) {
     this.setState(prevState => ({
       isTabToggled: !prevState.isTabToggled,
-      activeTab: tab
+      activeTab: tab,
     }))
   }
 
