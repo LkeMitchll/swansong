@@ -11,17 +11,21 @@ const Link = styled.a`
   color: ${ds.colors.faded};
 `
 
+const Text = styled.p`
+  margin: 0;
+`
+
 class Footer extends React.Component {
   render() {
     return (
       <Wrapper>
-        <p>
+        <Text>
           An <Link href="http://interroban.gg">interroban.gg</Link> project.
-        </p>
-        <p>
+        </Text>
+        <Text>
           <Link href="https://github.com/LkeMitchll/swansong">Source Code</Link>
           .
-        </p>
+        </Text>
       </Wrapper>
     )
   }
