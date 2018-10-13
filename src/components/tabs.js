@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'react-emotion'
 import ds from '../shared/design_system'
 import * as Epoch from '../shared/epoch.js'
-import Wrapper from './wrapper.js'
 import Tab from './tab.js'
 import Week from './week.js'
 
@@ -52,13 +51,11 @@ class Tabs extends React.Component {
           />
         </Container>
 
-        <Wrapper>
-          {this.state.isTabToggled ? (
-            <Week key="last" from={this.state.from} to={this.state.to} />
-          ) : (
-            <Week key="current" from={this.state.from} to={this.state.to} />
-          )}
-        </Wrapper>
+        {this.state.isTabToggled ? (
+          <Week key="last" from={this.state.from} to={this.state.to} />
+        ) : (
+          <Week key="current" from={this.state.from} to={this.state.to} />
+        )}
       </React.Fragment>
     )
   }

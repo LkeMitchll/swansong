@@ -1,9 +1,14 @@
 import React from 'react'
 import styled from 'react-emotion'
+import ds from '../shared/design_system.js'
 import axios from 'axios'
 import Subheading from './subheading.js'
 import Loading from './loading.js'
 import Track from './track.js'
+
+const Wrapper = styled.section`
+  margin-bottom: ${ds.spacing.l};
+`
 
 const List = styled.ol`
   list-style: none;
@@ -47,7 +52,7 @@ class RecentTracks extends React.Component {
     const isLoading = this.state.loading
 
     return (
-      <div>
+      <Wrapper>
         <header>
           <Subheading>Recent Tracks (10)</Subheading>
         </header>
@@ -80,7 +85,7 @@ class RecentTracks extends React.Component {
             ]
           )}
         </List>
-      </div>
+      </Wrapper>
     )
   }
 }

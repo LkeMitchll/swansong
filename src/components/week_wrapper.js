@@ -2,10 +2,12 @@ import React from 'react'
 import { Spring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
+import ds from '../shared/design_system.js'
 
-const Wrapper = animated(styled.div`
+const Wrapper = animated(styled.section`
   grid-template-columns: repeat(3, minmax(100px, 1fr));
   display: grid;
+  margin-bottom: ${ds.spacing.l};
 `)
 
 class WeekWrapper extends React.Component {
