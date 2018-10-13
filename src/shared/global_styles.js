@@ -60,6 +60,15 @@ const globalStyles = injectGlobal`
     }
   }
 
+  main {
+    padding: ${ds.spacing.base} ${ds.spacing.l};
+    max-width: 2000px;
+
+    @media (max-width: ${ds.breakpoints.s}) {
+      padding: ${ds.spacing.s};
+    }
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     color: ${ds.colors.light};
