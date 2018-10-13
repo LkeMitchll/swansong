@@ -31,7 +31,7 @@ const Phrase = styled.span`
   font-weight: 400;
 `
 
-class WeeklyCount extends React.Component {
+class Count extends React.Component {
   padCount(total) {
     const str = '0'
     const intendedLength = 3
@@ -58,10 +58,10 @@ class WeeklyCount extends React.Component {
   }
 }
 
-WeeklyCount.propTypes = {
+Count.propTypes = {
   style: PropTypes.object,
   total: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   suffix: PropTypes.string,
 }
 
-export default WeeklyCount
+export default Count

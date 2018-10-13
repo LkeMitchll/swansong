@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Transition } from 'react-spring'
 import WeekWrapper from './week_wrapper.js'
-import WeeklyCount from './weekly_count.js'
+import Count from './count.js'
 
 class Week extends React.Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class Week extends React.Component {
           update={{ opacity: 1 }}
         >
           {this.state.data.map(item => styles => (
-            <WeeklyCount
+            <Count
               style={styles}
               total={item.data}
               suffix={item.title}
