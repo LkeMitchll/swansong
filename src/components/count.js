@@ -1,16 +1,15 @@
 import React from 'react'
-import { Transition, animated } from 'react-spring'
 import styled from 'react-emotion'
 import ds from '../shared/design_system'
 import PropTypes from 'prop-types'
 import CountUp from 'react-countup'
 
-const Wrapper = animated(styled.h2`
+const Wrapper = styled.h2`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   margin: 0;
-`)
+`
 
 const Data = styled.span`
   font-family: ${ds.type.fonts.alt};
@@ -46,13 +45,7 @@ class Count extends React.Component {
           <CountUp end={Number(this.props.total)} />
         </Data>
 
-        <Transition
-          from={{ opacity: 0, transform: 'translateY(20px)' }}
-          update={{ opacity: 1, transform: 'translateY(0)' }}
-          delay={300}
-        >
-          {styles => <Phrase style={styles}>{this.props.suffix}</Phrase>}
-        </Transition>
+        <Phrase>{this.props.suffix}</Phrase>
       </Wrapper>
     )
   }

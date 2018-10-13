@@ -34,7 +34,11 @@
     "react-countup": "^4.0.0-alpha.6",
     "react-dom": "^16.0.0",
     "react-emotion": "^8.0.12",
+    "react-redux": "^5.0.7",
     "react-spring": "^5.9.2",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
     "webpack": "^3.8.1",
     "webpack-merge": "^4.1.1"
