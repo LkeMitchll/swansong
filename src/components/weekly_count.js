@@ -32,36 +32,19 @@ const Phrase = styled.span`
 `
 
 class WeeklyCount extends React.Component {
-  initCount(total) {
-    if (!total) {
-      return null
-    } else if (total < 10) {
-      return (
-        <Data>
-          <Outlined>00</Outlined>
-          <CountUp end={total}>{total}</CountUp>
-        </Data>
-      )
-    } else if (total < 100) {
-      return (
-        <Data>
-          <Outlined>0</Outlined>
-          <CountUp end={total}>{total}</CountUp>
-        </Data>
-      )
-    } else {
-      return (
-        <Data>
-          <CountUp end={total}>{total}</CountUp>
-        </Data>
-      )
-    }
+  padCount(total) {
+    const str = '0'
+    const intendedLength = 3
+    return str.repeat(intendedLength - String(total).length)
   }
 
   render() {
     return (
       <Wrapper style={this.props.style}>
-        {this.initCount(this.props.total)}
+        <Data>
+          <Outlined>{this.padCount(this.props.total)}</Outlined>
+          <CountUp end={this.props.total} />
+        </Data>
 
         <Transition
           from={{ opacity: 0, transform: 'translateY(20px)' }}

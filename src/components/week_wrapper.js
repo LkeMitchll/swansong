@@ -15,11 +15,7 @@ class WeekWrapper extends React.Component {
         from={{ opacity: 0, transform: 'translateY(100px)' }}
         to={{ opacity: 1, transform: 'translateY(0)' }}
       >
-        {props => (
-          <Wrapper style={props}>
-            {this.props.children}
-          </Wrapper>
-        )}
+        {props => <Wrapper style={props}>{this.props.children}</Wrapper>}
       </Spring>
     )
   }
