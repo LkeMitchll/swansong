@@ -1,13 +1,16 @@
 import React from 'react'
+import { Transition, animated } from 'react-spring'
 import styled from 'react-emotion'
 import ds from '../shared/design_system'
 import PropTypes from 'prop-types'
+import CountUp from 'react-countup'
 
-const Wrapper = styled.h2`
+const Wrapper = animated(styled.h2`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   margin: 0;
-`
+`)
 
 const Data = styled.span`
   font-family: ${ds.type.fonts.alt};
@@ -30,35 +33,50 @@ const Phrase = styled.span`
 
 class WeeklyCount extends React.Component {
   initCount(total) {
-    if (total < 10) {
+    if (!total) {
+      return null
+    } else if (total < 10) {
       return (
         <Data>
           <Outlined>00</Outlined>
-          {total}
+          <CountUp end={total}>{total}</CountUp>
         </Data>
       )
     } else if (total < 100) {
       return (
         <Data>
           <Outlined>0</Outlined>
-          {total}
+          <CountUp end={total}>{total}</CountUp>
         </Data>
       )
     } else {
-      return <Data>{total}</Data>
+      return (
+        <Data>
+          <CountUp end={total}>{total}</CountUp>
+        </Data>
+      )
     }
   }
+
   render() {
     return (
-      <Wrapper>
+      <Wrapper style={this.props.style}>
         {this.initCount(this.props.total)}
-        <Phrase>{this.props.suffix}</Phrase>
+
+        <Transition
+          from={{ opacity: 0, transform: 'translateY(20px)' }}
+          update={{ opacity: 1, transform: 'translateY(0)' }}
+          delay={300}
+        >
+          {styles => <Phrase style={styles}>{this.props.suffix}</Phrase>}
+        </Transition>
       </Wrapper>
     )
   }
 }
 
 WeeklyCount.propTypes = {
+  style: PropTypes.object,
   total: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   suffix: PropTypes.string,
 }

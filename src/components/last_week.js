@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Transition, config } from 'react-spring'
 import * as Epoch from '../shared/epoch.js'
 import WeekWrapper from './week_wrapper.js'
 import WeeklyCount from './weekly_count.js'
@@ -8,10 +9,12 @@ class LastWeek extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      albums: '0',
-      tracks: '0',
-      artists: '0',
       loading: true,
+      data: [
+        { title: 'Albums', data: '0' },
+        { title: 'Tracks', data: '0' },
+        { title: 'Artists', data: '0' },
+      ],
     }
   }
 
@@ -32,9 +35,11 @@ class LastWeek extends React.Component {
     axios.all([getAlbums, getTracks, getArtists]).then(
       axios.spread((albums, tracks, artists) => {
         this.setState({
-          albums: albums.data,
-          tracks: tracks.data,
-          artists: artists.data,
+          data: [
+            { title: 'Albums', data: albums.data },
+            { title: 'Tracks', data: tracks.data },
+            { title: 'Artists', data: artists.data },
+          ],
           loading: false,
         })
       })
@@ -42,33 +47,23 @@ class LastWeek extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.state
-
     return (
       <WeekWrapper>
-        {isLoading
-          ? [
-              <WeeklyCount key="tracks" total={0} suffix="Tracks" />,
-              <WeeklyCount key="albums" total={0} suffix="Albums" />,
-              <WeeklyCount key="artists" total={0} suffix="Artists" />,
-            ]
-          : [
-              <WeeklyCount
-                key="tracks"
-                total={this.state.tracks}
-                suffix="Tracks"
-              />,
-              <WeeklyCount
-                key="albums"
-                total={this.state.albums}
-                suffix="Albums"
-              />,
-              <WeeklyCount
-                key="artists"
-                total={this.state.artists}
-                suffix="Artists"
-              />,
-            ]}
+        <Transition
+          keys={this.state.data.map(item => item.title)}
+          from={{ opacity: 0.5 }}
+          update={{ opacity: 1 }}
+          config={config.wobbly}
+        >
+          {this.state.data.map(item => styles => (
+            <WeeklyCount
+              style={styles}
+              total={item.data}
+              suffix={item.title}
+              loading={this.state.loading}
+            />
+          ))}
+        </Transition>
       </WeekWrapper>
     )
   }
