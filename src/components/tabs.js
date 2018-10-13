@@ -101,6 +101,21 @@ class Tabs extends React.Component {
             </Container>
           )}
         </Spring>
+        {this.props.isFetching && (
+          <Week
+            key={this.props.selectedWeek}
+            totals={{
+              albums: { title: 'Albums', total: 0 },
+              artists: { title: 'Artists', total: 0 },
+              tracks: { title: 'Tracks', total: 0 },
+            }}
+            comparators={{
+              albums: { title: 'Albums', total: 0 },
+              artists: { title: 'Artists', total: 0 },
+              tracks: { title: 'Tracks', total: 0 },
+            }}
+          />
+        )}
         {!this.props.isFetching && (
           <Week
             key={this.props.selectedWeek}
