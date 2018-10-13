@@ -19,6 +19,11 @@ const Phrase = styled.span`
 
 const PositivePercentage = styled.span`
   color: ${ds.colors.positive};
+
+  &::before {
+    content: '\\2191';
+    margin-right: 0.5rem;
+  }
 `
 
 const NegativePercentage = styled.span`
