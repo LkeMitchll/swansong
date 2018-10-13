@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 import ds from '../shared/design_system'
 import * as Epoch from '../shared/epoch.js'
 import Tab from './tab.js'
@@ -14,12 +14,30 @@ const Container = styled.header`
   position: relative;
   z-index: 1000;
 `
+const Link = css`
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+`
+
+const ActiveLink = css`
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
 
 class Tabs extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       prevWeek: [],
+      isTabToggled: false,
+      activeTab: 'current',
     }
     this.toggleTab = this.toggleTab.bind(this)
   }
@@ -39,6 +57,7 @@ class Tabs extends React.Component {
       this.setState({
         prevWeek: prevProps.totals,
       })
+      console.log(this.state)
     }
   }
 
@@ -56,6 +75,10 @@ class Tabs extends React.Component {
 
     this.props.dispatch(selectWeek(toFrom[week].from))
     this.props.dispatch(fetchTotalsIfNeeded(toFrom[week].from, toFrom[week].to))
+    this.setState(prevState => ({
+      isTabToggled: !prevState.isTabToggled,
+      activeTab: week,
+    }))
   }
 
   render() {
@@ -67,11 +90,13 @@ class Tabs extends React.Component {
               <Tab
                 label="This Week"
                 onChange={e => this.toggleTab(e, 'current')}
+                isCurrent={this.state.activeTab == 'current' && true}
               />
               &nbsp;/&nbsp;
               <Tab
                 label="Last Week"
                 onChange={e => this.toggleTab(e, 'previous')}
+                isCurrent={this.state.activeTab == 'previous' && true}
               />
             </Container>
           )}
