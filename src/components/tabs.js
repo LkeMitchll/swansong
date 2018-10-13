@@ -1,8 +1,9 @@
 import React from 'react'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 import ds from '../shared/design_system'
 import * as Epoch from '../shared/epoch.js'
 import Wrapper from './wrapper.js'
+import Tab from './tab.js'
 import Week from './week.js'
 
 const Container = styled.header`
@@ -11,44 +12,26 @@ const Container = styled.header`
   z-index: 1000;
 `
 
-const Input = styled.input`
-  display: none;
-`
-
-const Link = css`
-  text-decoration: underline;
-
-  &:hover {
-    cursor: pointer;
-    text-decoration: none;
-  }
-`
-
-const ActiveLink = css`
-  text-decoration: none;
-
-  &:hover {
-    cursor: pointer;
-  }
-`
-
 class Tabs extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       isTabToggled: false,
-      activeTab: 'current',
       from: Epoch.getEndOfLastWeek(new Date()),
       to: Epoch.getNow(),
     }
+    this.toggleTab = this.toggleTab.bind(this)
   }
 
-  tTabb(e, tab, from, to) {
+  toggleTab() {
     this.setState(prevState => ({
       isTabToggled: !prevState.isTabToggled,
-      activeTab: tab,
-      from: from,
-      to: to,
+      from: this.state.isTabToggled
+        ? Epoch.getEndOfLastWeek(new Date())
+        : Epoch.getStartOfLastWeek(new Date()),
+      to: this.state.isTabToggled
+        ? Epoch.getNow()
+        : Epoch.getEndOfLastWeek(new Date()),
     }))
   }
 
@@ -56,41 +39,17 @@ class Tabs extends React.Component {
     return (
       <React.Fragment>
         <Container>
-          <label
-            className={this.state.activeTab == 'current' ? ActiveLink : Link}
-          >
-            <Input
-              type="radio"
-              value="Last Week"
-              name="week"
-              onChange={e =>
-                this.toggleTab(
-                  e,
-                  'current',
-                  Epoch.getEndOfLastWeek(new Date()),
-                  Epoch.getNow()
-                )
-              }
-            />
-            This Week
-          </label>
+          <Tab
+            isCurrent={!this.state.isTabToggled}
+            label="This Week"
+            onChange={this.toggleTab}
+          />
           &nbsp;/&nbsp;
-          <label className={this.state.activeTab == 'last' ? ActiveLink : Link}>
-            <Input
-              type="radio"
-              value="Last Week"
-              name="week"
-              onChange={e =>
-                this.toggleTab(
-                  e,
-                  'last',
-                  Epoch.getStartOfLastWeek(new Date()),
-                  Epoch.getEndOfLastWeek(new Date())
-                )
-              }
-            />
-            Last Week
-          </label>
+          <Tab
+            isCurrent={this.state.isTabToggled}
+            label="Last Week"
+            onChange={this.toggleTab}
+          />
         </Container>
 
         <Wrapper>
