@@ -4,13 +4,6 @@ import ds from '../shared/design_system'
 import PropTypes from 'prop-types'
 import CountUp from 'react-countup'
 
-const Wrapper = styled.h2`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 0;
-`
-
 const Data = styled.span`
   font-family: ${ds.type.fonts.alt};
   line-height: 0.8;
@@ -26,10 +19,6 @@ const Outlined = styled.span`
   color: ${ds.colors.dark};
 `
 
-const Phrase = styled.span`
-  font-weight: 400;
-`
-
 class Count extends React.Component {
   padCount(total) {
     const str = '0'
@@ -39,14 +28,10 @@ class Count extends React.Component {
 
   render() {
     return (
-      <Wrapper style={this.props.style}>
-        <Data>
-          <Outlined>{this.padCount(this.props.total)}</Outlined>
-          <CountUp end={Number(this.props.total)} />
-        </Data>
-
-        <Phrase>{this.props.suffix}</Phrase>
-      </Wrapper>
+      <Data>
+        <Outlined>{this.padCount(this.props.total)}</Outlined>
+        <CountUp end={this.props.total}>{this.props.total}</CountUp>
+      </Data>
     )
   }
 }

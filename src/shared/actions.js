@@ -61,11 +61,11 @@ function fetchTotals(from, to) {
     axios.all([getPreviousTracks, getAlbums, getTracks, getArtists]).then(
       axios.spread((previousTracks, albums, tracks, artists) => {
         dispatch(
-          receiveTotals(from, [
-            ['Tracks', tracks],
-            ['Albums', albums],
-            ['Artists', artists],
-          ])
+          receiveTotals(from, {
+            tracks: { title: 'Tracks', total: tracks.data },
+            albums: { title: 'Albums', total: albums.data },
+            artists: { title: 'Artists', total: artists.data },
+          })
         )
       })
     )

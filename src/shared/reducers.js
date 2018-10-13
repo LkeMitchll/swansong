@@ -19,7 +19,7 @@ function totals(
   state = {
     isFetching: false,
     didInvalidate: false,
-    items: [],
+    items: {},
   },
   action
 ) {

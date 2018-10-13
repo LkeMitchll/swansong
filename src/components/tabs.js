@@ -17,6 +17,9 @@ const Container = styled.header`
 class Tabs extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      prevWeek: [],
+    }
     this.toggleTab = this.toggleTab.bind(this)
   }
 
@@ -32,6 +35,9 @@ class Tabs extends React.Component {
     if (this.props.selectedWeek !== prevProps.selectedWeek) {
       const { dispatch, selectedWeek } = this.props
       dispatch(fetchTotalsIfNeeded(selectedWeek))
+      this.setState({
+        prevWeek: prevProps.totals,
+      })
     }
   }
 
@@ -62,15 +68,22 @@ class Tabs extends React.Component {
             onChange={e => this.toggleTab(e, 'previous')}
           />
         </Container>
-        <Week key={this.props.selectedWeek} totals={this.props.totals} />
+        {!this.props.isFetching && (
+          <Week
+            key={this.props.selectedWeek}
+            totals={this.props.totals}
+            comparators={this.state.prevWeek}
+          />
+        )}
       </React.Fragment>
     )
   }
 }
 
 Tabs.propTypes = {
-  selectedWeek: PropTypes.number.isRequired,
-  totals: PropTypes.array.isRequired,
+  selectedWeek: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
+    .isRequired,
+  totals: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired,
@@ -82,7 +95,7 @@ function mapStateToProps(state) {
     selectedWeek
   ] || {
     isFetching: true,
-    items: [],
+    items: {},
   }
   return {
     selectedWeek,
