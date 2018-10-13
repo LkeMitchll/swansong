@@ -60,6 +60,7 @@ class Week extends React.Component {
           keys={this.state.data.map(item => item.title)}
           from={{ opacity: 0.5 }}
           update={{ opacity: 1 }}
+          delay={500}
         >
           {this.state.data.map(item => styles => (
             <Count
