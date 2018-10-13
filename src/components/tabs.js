@@ -7,6 +7,7 @@ import Tab from './tab.js'
 import Week from './week.js'
 import { connect } from 'react-redux'
 import { selectWeek, fetchTotalsIfNeeded } from '../shared/actions'
+import { Spring } from 'react-spring'
 
 const Container = styled.header`
   margin-bottom: ${ds.spacing.base};
@@ -60,14 +61,21 @@ class Tabs extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Container>
-          <Tab label="This Week" onChange={e => this.toggleTab(e, 'current')} />
-          &nbsp;/&nbsp;
-          <Tab
-            label="Last Week"
-            onChange={e => this.toggleTab(e, 'previous')}
-          />
-        </Container>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={300}>
+          {props => (
+            <Container style={props}>
+              <Tab
+                label="This Week"
+                onChange={e => this.toggleTab(e, 'current')}
+              />
+              &nbsp;/&nbsp;
+              <Tab
+                label="Last Week"
+                onChange={e => this.toggleTab(e, 'previous')}
+              />
+            </Container>
+          )}
+        </Spring>
         {!this.props.isFetching && (
           <Week
             key={this.props.selectedWeek}

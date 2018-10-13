@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import ds from '../shared/design_system'
+import { Transition } from 'react-spring'
 import WeekWrapper from './week_wrapper.js'
 import Count from './count.js'
 import percentDiff from 'percentage-difference'
@@ -44,40 +45,94 @@ class Week extends React.Component {
     return (
       <WeekWrapper>
         <Wrapper>
-          <Count total={this.props.totals.tracks.total} />
-          <Phrase>
-            {this.props.totals.tracks.title}
-            &nbsp;
-            {Object.keys(this.props.comparators).length > 0 &&
-              this.getPercentage(
-                this.props.totals.tracks.total,
-                this.props.comparators.tracks.total
-              )}
-          </Phrase>
+          <Transition
+            from={{ opacity: 0.5 }}
+            enter={{ opacity: 1 }}
+            update={{ opacity: 1 }}
+            delay={1000}
+          >
+            {styles => (
+              <Count style={styles} total={this.props.totals.tracks.total} />
+            )}
+          </Transition>
+          <Transition
+            from={{ opacity: 0, transform: 'translateY(20px)' }}
+            update={{ opacity: 1, transform: 'translateY(0)' }}
+            enter={{ opacity: 1, transform: 'translateY(0)' }}
+            delay={500}
+          >
+            {styles => (
+              <Phrase style={styles}>
+                {this.props.totals.tracks.title}
+                &nbsp;
+                {Object.keys(this.props.comparators).length > 0 &&
+                  this.getPercentage(
+                    this.props.totals.tracks.total,
+                    this.props.comparators.tracks.total
+                  )}
+              </Phrase>
+            )}
+          </Transition>
         </Wrapper>
         <Wrapper>
-          <Count total={this.props.totals.albums.total} />
-          <Phrase>
-            {this.props.totals.albums.title}
-            &nbsp;
-            {Object.keys(this.props.comparators).length > 0 &&
-              this.getPercentage(
-                this.props.totals.albums.total,
-                this.props.comparators.albums.total
-              )}
-          </Phrase>
+          <Transition
+            from={{ opacity: 0.5 }}
+            enter={{ opacity: 1 }}
+            update={{ opacity: 1 }}
+            delay={1000}
+          >
+            {styles => (
+              <Count style={styles} total={this.props.totals.albums.total} />
+            )}
+          </Transition>
+          <Transition
+            from={{ opacity: 0, transform: 'translateY(20px)' }}
+            update={{ opacity: 1, transform: 'translateY(0)' }}
+            enter={{ opacity: 1, transform: 'translateY(0)' }}
+            delay={500}
+          >
+            {styles => (
+              <Phrase style={styles}>
+                {this.props.totals.albums.title}
+                &nbsp;
+                {Object.keys(this.props.comparators).length > 0 &&
+                  this.getPercentage(
+                    this.props.totals.albums.total,
+                    this.props.comparators.albums.total
+                  )}
+              </Phrase>
+            )}
+          </Transition>
         </Wrapper>
         <Wrapper>
-          <Count total={this.props.totals.artists.total} />
-          <Phrase>
-            {this.props.totals.artists.title}
-            &nbsp;
-            {Object.keys(this.props.comparators).length > 0 &&
-              this.getPercentage(
-                this.props.totals.artists.total,
-                this.props.comparators.artists.total
-              )}
-          </Phrase>
+          <Transition
+            from={{ opacity: 0.5 }}
+            enter={{ opacity: 1 }}
+            update={{ opacity: 1 }}
+            delay={1000}
+          >
+            {styles => (
+              <Count style={styles} total={this.props.totals.albums.total} />
+            )}
+          </Transition>
+          <Transition
+            from={{ opacity: 0, transform: 'translateY(20px)' }}
+            update={{ opacity: 1, transform: 'translateY(0)' }}
+            enter={{ opacity: 1, transform: 'translateY(0)' }}
+            delay={500}
+          >
+            {styles => (
+              <Phrase style={styles}>
+                {this.props.totals.artists.title}
+                &nbsp;
+                {Object.keys(this.props.comparators).length > 0 &&
+                  this.getPercentage(
+                    this.props.totals.artists.total,
+                    this.props.comparators.artists.total
+                  )}
+              </Phrase>
+            )}
+          </Transition>
         </Wrapper>
       </WeekWrapper>
     )

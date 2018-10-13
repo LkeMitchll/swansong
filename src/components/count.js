@@ -28,7 +28,7 @@ class Count extends React.Component {
 
   render() {
     return (
-      <Data>
+      <Data style={this.props.style}>
         <Outlined>{this.padCount(this.props.total)}</Outlined>
         <CountUp end={this.props.total}>{this.props.total}</CountUp>
       </Data>
