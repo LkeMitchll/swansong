@@ -65,11 +65,23 @@ class Week extends React.Component {
               <Phrase style={styles}>
                 {this.props.totals.tracks.title}
                 &nbsp;
-                {Object.keys(this.props.comparators).length > 0 &&
-                  this.getPercentage(
-                    this.props.totals.tracks.total,
-                    this.props.comparators.tracks.total
-                  )}
+                {Object.keys(this.props.comparators).length > 0 && (
+                  <Transition
+                    from={{ opacity: 0, transform: 'translateY(40px)' }}
+                    update={{ opacity: 1, transform: 'translateY(0)' }}
+                    enter={{ opacity: 1, transform: 'translateY(0)' }}
+                    delay={700}
+                  >
+                    {styles => (
+                      <span style={styles}>
+                        {this.getPercentage(
+                          this.props.totals.tracks.total,
+                          this.props.comparators.tracks.total
+                        )}
+                      </span>
+                    )}
+                  </Transition>
+                )}
               </Phrase>
             )}
           </Transition>
@@ -95,11 +107,23 @@ class Week extends React.Component {
               <Phrase style={styles}>
                 {this.props.totals.albums.title}
                 &nbsp;
-                {Object.keys(this.props.comparators).length > 0 &&
-                  this.getPercentage(
-                    this.props.totals.albums.total,
-                    this.props.comparators.albums.total
-                  )}
+                {Object.keys(this.props.comparators).length > 0 && (
+                  <Transition
+                    from={{ opacity: 0, transform: 'translateY(40px)' }}
+                    update={{ opacity: 1, transform: 'translateY(0)' }}
+                    enter={{ opacity: 1, transform: 'translateY(0)' }}
+                    delay={700}
+                  >
+                    {styles => (
+                      <span style={styles}>
+                        {this.getPercentage(
+                          this.props.totals.albums.total,
+                          this.props.comparators.albums.total
+                        )}
+                      </span>
+                    )}
+                  </Transition>
+                )}
               </Phrase>
             )}
           </Transition>
@@ -125,11 +149,23 @@ class Week extends React.Component {
               <Phrase style={styles}>
                 {this.props.totals.artists.title}
                 &nbsp;
-                {Object.keys(this.props.comparators).length > 0 &&
-                  this.getPercentage(
-                    this.props.totals.artists.total,
-                    this.props.comparators.artists.total
-                  )}
+                {Object.keys(this.props.comparators).length > 0 && (
+                  <Transition
+                    from={{ opacity: 0, transform: 'translateY(40px)' }}
+                    update={{ opacity: 1, transform: 'translateY(0)' }}
+                    enter={{ opacity: 1, transform: 'translateY(0)' }}
+                    delay={700}
+                  >
+                    {styles => (
+                      <span style={styles}>
+                        {this.getPercentage(
+                          this.props.totals.artists.total,
+                          this.props.comparators.artists.total
+                        )}
+                      </span>
+                    )}
+                  </Transition>
+                )}
               </Phrase>
             )}
           </Transition>
