@@ -43,7 +43,7 @@ class Count extends React.Component {
       <Wrapper style={this.props.style}>
         <Data>
           <Outlined>{this.padCount(this.props.total)}</Outlined>
-          <CountUp end={this.props.total} />
+          <CountUp end={Number(this.props.total)} />
         </Data>
 
         <Transition
