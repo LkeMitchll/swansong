@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 import ds from '../shared/design_system'
 import * as Epoch from '../shared/epoch.js'
 import Tab from './tab.js'
@@ -13,22 +13,6 @@ const Container = styled.header`
   margin-bottom: ${ds.spacing.base};
   position: relative;
   z-index: 1000;
-`
-const Link = css`
-  text-decoration: underline;
-
-  &:hover {
-    cursor: pointer;
-    text-decoration: none;
-  }
-`
-
-const ActiveLink = css`
-  text-decoration: none;
-
-  &:hover {
-    cursor: pointer;
-  }
 `
 
 class Tabs extends React.Component {
@@ -57,7 +41,6 @@ class Tabs extends React.Component {
       this.setState({
         prevWeek: prevProps.totals,
       })
-      console.log(this.state)
     }
   }
 
