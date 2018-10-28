@@ -50,7 +50,7 @@ class Count extends React.Component {
   getPercentage(current, previous) {
     const percentage = percentDiff(previous, current, true)
 
-    if (percentage == 'Infinity') {
+    if (isNaN(percentage)) {
       return null
     } else if (percentage < 0) {
       return <NegativePercentage>{percentage}%</NegativePercentage>
