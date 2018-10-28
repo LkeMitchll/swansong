@@ -65,6 +65,12 @@ class Tabs extends React.Component {
   }
 
   render() {
+    const initialData = {
+      albums: { title: 'Albums', total: 0 },
+      artists: { title: 'Artists', total: 0 },
+      tracks: { title: 'Tracks', total: 0 },
+    }
+
     return (
       <React.Fragment>
         <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={300}>
@@ -87,23 +93,19 @@ class Tabs extends React.Component {
         {this.props.isFetching && (
           <Week
             key={this.props.selectedWeek}
-            totals={{
-              albums: { title: 'Albums', total: 0 },
-              artists: { title: 'Artists', total: 0 },
-              tracks: { title: 'Tracks', total: 0 },
-            }}
-            comparators={{
-              albums: { title: 'Albums', total: 0 },
-              artists: { title: 'Artists', total: 0 },
-              tracks: { title: 'Tracks', total: 0 },
-            }}
+            totals={initialData}
+            comparators={initialData}
           />
         )}
         {!this.props.isFetching && (
           <Week
             key={this.props.selectedWeek}
             totals={this.props.totals}
-            comparators={this.state.prevWeek}
+            comparators={
+              Object.keys(this.state.prevWeek).length
+                ? this.state.prevWeek
+                : initialData
+            }
           />
         )}
       </React.Fragment>

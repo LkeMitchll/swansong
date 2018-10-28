@@ -34,11 +34,6 @@ const Outlined = styled.span`
 
 const PositivePercentage = styled.span`
   color: ${ds.colors.positive};
-
-  &::before {
-    content: '\\2191';
-    margin-right: 0.5rem;
-  }
 `
 
 const NegativePercentage = styled.span`
@@ -54,11 +49,14 @@ class Count extends React.Component {
 
   getPercentage(current, previous) {
     const percentage = percentDiff(previous, current, true)
-    return percentage < 0 ? (
-      <NegativePercentage>{percentage}%</NegativePercentage>
-    ) : (
-      <PositivePercentage>{percentage}%</PositivePercentage>
-    )
+
+    if (percentage == 'Infinity') {
+      return null
+    } else if (percentage < 0) {
+      return <NegativePercentage>{percentage}%</NegativePercentage>
+    } else {
+      return <PositivePercentage>+{percentage}%</PositivePercentage>
+    }
   }
 
   render() {
