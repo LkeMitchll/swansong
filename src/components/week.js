@@ -10,17 +10,17 @@ class Week extends React.Component {
         <Count
           total={this.props.totals.tracks.total}
           title={this.props.totals.tracks.title}
-          comparison={this.props.comparators.tracks.total}
+          comparison={this.props.totals.prevTracks.total}
         />
         <Count
           total={this.props.totals.albums.total}
           title={this.props.totals.albums.title}
-          comparison={this.props.comparators.albums.total}
+          comparison={this.props.totals.prevAlbums.total}
         />
         <Count
           total={this.props.totals.artists.total}
           title={this.props.totals.artists.title}
-          comparison={this.props.comparators.artists.total}
+          comparison={this.props.totals.prevArtists.total}
         />
       </WeekWrapper>
     )

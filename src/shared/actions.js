@@ -1,4 +1,3 @@
-import * as Epoch from './epoch'
 import axios from 'axios'
 
 export const SELECT_WEEK = 'SELECT_WEEK'
@@ -39,15 +38,9 @@ function receiveTotals(from, json) {
   }
 }
 
-function fetchTotals(from, to) {
+function fetchTotals(from, to, prevFrom, prevTo) {
   return function(dispatch) {
     dispatch(requestTotals(from))
-    const getPreviousTracks = axios.get(
-      `${process.env.API_URL}/recent_tracks/total/${Epoch.getStartOfLastWeek(
-        new Date()
-      )}.${Epoch.getEndOfLastWeek(new Date())}`
-    )
-
     const getAlbums = axios.get(
       `${process.env.API_URL}/weekly_album_chart/total/${from}.${to}`
     )
@@ -57,18 +50,41 @@ function fetchTotals(from, to) {
     const getArtists = axios.get(
       `${process.env.API_URL}/weekly_artist_chart/total/${from}.${to}`
     )
-
-    axios.all([getPreviousTracks, getAlbums, getTracks, getArtists]).then(
-      axios.spread((previousTracks, albums, tracks, artists) => {
-        dispatch(
-          receiveTotals(from, {
-            tracks: { title: 'Tracks', total: tracks.data },
-            albums: { title: 'Albums', total: albums.data },
-            artists: { title: 'Artists', total: artists.data },
-          })
-        )
-      })
+    const getPrevAlbums = axios.get(
+      `${process.env.API_URL}/weekly_album_chart/total/${prevFrom}.${prevTo}`
     )
+    const getPrevTracks = axios.get(
+      `${process.env.API_URL}/recent_tracks/total/${prevFrom}.${prevTo}`
+    )
+    const getPrevArtists = axios.get(
+      `${process.env.API_URL}/weekly_artist_chart/total/${prevFrom}.${prevTo}`
+    )
+
+    axios
+      .all([
+        getAlbums,
+        getTracks,
+        getArtists,
+        getPrevAlbums,
+        getPrevTracks,
+        getPrevArtists,
+      ])
+      .then(
+        axios.spread(
+          (albums, tracks, artists, prevAlbums, prevTracks, prevArtists) => {
+            dispatch(
+              receiveTotals(from, {
+                tracks: { title: 'Tracks', total: tracks.data },
+                albums: { title: 'Albums', total: albums.data },
+                artists: { title: 'Artists', total: artists.data },
+                prevTracks: { title: 'Tracks', total: prevTracks.data },
+                prevAlbums: { title: 'Albums', total: prevAlbums.data },
+                prevArtists: { title: 'Artists', total: prevArtists.data },
+              })
+            )
+          }
+        )
+      )
   }
 }
 
@@ -83,10 +99,10 @@ function shouldFetchTotals(state, from) {
   }
 }
 
-export function fetchTotalsIfNeeded(from, to) {
+export function fetchTotalsIfNeeded(from, to, prevFrom, prevTo) {
   return (dispatch, getState) => {
     if (shouldFetchTotals(getState(), from)) {
-      return dispatch(fetchTotals(from, to))
+      return dispatch(fetchTotals(from, to, prevFrom, prevTo))
     }
   }
 }

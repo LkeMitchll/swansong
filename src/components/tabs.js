@@ -19,7 +19,6 @@ class Tabs extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      prevWeek: [],
       isTabToggled: false,
       activeTab: 'current',
     }
@@ -30,7 +29,12 @@ class Tabs extends React.Component {
     const { dispatch } = this.props
     dispatch(selectWeek(Epoch.getEndOfLastWeek(new Date())))
     dispatch(
-      fetchTotalsIfNeeded(Epoch.getEndOfLastWeek(new Date()), Epoch.getNow())
+      fetchTotalsIfNeeded(
+        Epoch.getEndOfLastWeek(new Date()),
+        Epoch.getNow(),
+        Epoch.getStartOfLastWeek(new Date()),
+        Epoch.getEndOfLastWeek(new Date())
+      )
     )
   }
 
@@ -38,9 +42,6 @@ class Tabs extends React.Component {
     if (this.props.selectedWeek !== prevProps.selectedWeek) {
       const { dispatch, selectedWeek } = this.props
       dispatch(fetchTotalsIfNeeded(selectedWeek))
-      this.setState({
-        prevWeek: prevProps.totals,
-      })
     }
   }
 
@@ -49,15 +50,26 @@ class Tabs extends React.Component {
       current: {
         from: Epoch.getEndOfLastWeek(new Date()),
         to: Epoch.getNow(),
+        prevFrom: Epoch.getStartOfLastWeek(new Date()),
+        prevTo: Epoch.getEndOfLastWeek(new Date()),
       },
       previous: {
         from: Epoch.getStartOfLastWeek(new Date()),
         to: Epoch.getEndOfLastWeek(new Date()),
+        prevFrom: Epoch.getEndOfLastWeek(new Date()),
+        prevTo: Epoch.getNow(),
       },
     }
 
     this.props.dispatch(selectWeek(toFrom[week].from))
-    this.props.dispatch(fetchTotalsIfNeeded(toFrom[week].from, toFrom[week].to))
+    this.props.dispatch(
+      fetchTotalsIfNeeded(
+        toFrom[week].from,
+        toFrom[week].to,
+        toFrom[week].prevFrom,
+        toFrom[week].prevTo
+      )
+    )
     this.setState(prevState => ({
       isTabToggled: !prevState.isTabToggled,
       activeTab: week,
@@ -69,6 +81,9 @@ class Tabs extends React.Component {
       albums: { title: 'Albums', total: 0 },
       artists: { title: 'Artists', total: 0 },
       tracks: { title: 'Tracks', total: 0 },
+      prevAlbums: { title: 'Albums', total: 0 },
+      prevArtists: { title: 'Artists', total: 0 },
+      prevTracks: { title: 'Tracks', total: 0 },
     }
 
     return (
@@ -91,22 +106,10 @@ class Tabs extends React.Component {
           )}
         </Spring>
         {this.props.isFetching && (
-          <Week
-            key={this.props.selectedWeek}
-            totals={initialData}
-            comparators={initialData}
-          />
+          <Week key={this.props.selectedWeek} totals={initialData} />
         )}
         {!this.props.isFetching && (
-          <Week
-            key={this.props.selectedWeek}
-            totals={this.props.totals}
-            comparators={
-              Object.keys(this.state.prevWeek).length
-                ? this.state.prevWeek
-                : initialData
-            }
-          />
+          <Week key={this.props.selectedWeek} totals={this.props.totals} />
         )}
       </React.Fragment>
     )
