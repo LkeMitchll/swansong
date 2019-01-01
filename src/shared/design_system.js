@@ -3,7 +3,7 @@ const ds = {
     baseFontSize: '48px',
     sizes: {
       base: '3.5vw',
-      alt: '50vw',
+      alt: '64vw',
     },
     fonts: {
       base: '"Lunchtype 24", Times New Roman',
