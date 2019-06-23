@@ -62,7 +62,7 @@ const globalStyles = injectGlobal`
 
   main {
     padding: ${ds.spacing.base} ${ds.spacing.l};
-    max-width: 2000px;
+    max-width: 1800px;
     line-height: 1.5;
 
     @media (max-width: ${ds.breakpoints.s}) {

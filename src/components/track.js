@@ -8,6 +8,7 @@ const Wrapper = styled.li`
 `
 
 const Song = styled.a`
+  font-size: ${ds.type.sizes.base};
   display: block;
   text-decoration: none;
   color: ${ds.colors.light};

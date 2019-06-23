@@ -1,9 +1,9 @@
 const ds = {
   type: {
-    baseFontSize: '48px',
+    baseFontSize: '40px',
     sizes: {
-      base: '3.5vw',
-      alt: '64vw',
+      base: '2.3vw',
+      alt: '50vw',
     },
     fonts: {
       base: '"Lunchtype 24", Times New Roman',

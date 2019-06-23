@@ -22,7 +22,7 @@ const Data = styled.span`
   line-height: 0.8;
   font-size: ${ds.type.sizes.alt};
 
-  @media (min-width: 2000px) {
+  @media (min-width: 1800px) {
     font-size: 24rem;
   }
 `
