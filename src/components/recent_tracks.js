@@ -29,7 +29,9 @@ class RecentTracks extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`${process.env.API_URL}/recent_tracks`)
+      .get(
+        `${process.env.API_URL}/recent/total?limit=10`,
+      )
       .then(res => {
         const songs = res.data.recenttracks.track.map(obj => obj)
 

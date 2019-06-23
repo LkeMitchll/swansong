@@ -42,22 +42,22 @@ function fetchTotals(from, to, prevFrom, prevTo) {
   return function(dispatch) {
     dispatch(requestTotals(from))
     const getAlbums = axios.get(
-      `${process.env.API_URL}/weekly_album_chart/total/${from}.${to}`
+      `${process.env.API_URL}/albums/range?from=${from}&to=${to}`
     )
     const getTracks = axios.get(
-      `${process.env.API_URL}/recent_tracks/total/${from}.${to}`
+      `${process.env.API_URL}/recent/range?from=${from}&to=${to}`
     )
     const getArtists = axios.get(
-      `${process.env.API_URL}/weekly_artist_chart/total/${from}.${to}`
+      `${process.env.API_URL}/artists/range?from=${from}&to=${to}`
     )
     const getPrevAlbums = axios.get(
-      `${process.env.API_URL}/weekly_album_chart/total/${prevFrom}.${prevTo}`
+      `${process.env.API_URL}/albums/range?from=${prevFrom}&to=${prevTo}`
     )
     const getPrevTracks = axios.get(
-      `${process.env.API_URL}/recent_tracks/total/${prevFrom}.${prevTo}`
+      `${process.env.API_URL}/recent/range?from=${prevFrom}&to=${prevTo}`
     )
     const getPrevArtists = axios.get(
-      `${process.env.API_URL}/weekly_artist_chart/total/${prevFrom}.${prevTo}`
+      `${process.env.API_URL}/artists/range?from=${prevFrom}&to=${prevTo}`
     )
 
     axios
